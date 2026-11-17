@@ -1,0 +1,128 @@
+id,ko,taxa,mode,spring,category,group
+quercus,참나무류(도토리),Quercus,kr_ea,0,edible_caution,plant
+castanea,밤나무,Castanea crenata,kr,0,edible,plant
+pinus_koraiensis,잣나무,Pinus koraiensis,kr,0,edible,plant
+pinus_densiflora,소나무,Pinus densiflora,kr,0,edible_caution,plant
+corylus,개암나무류,Corylus,kr_ea,0,edible,plant
+juglans,가래나무,Juglans mandshurica;Juglans cathayensis,kr,0,edible,plant
+actinidia,다래류,Actinidia,kr_ea,0,edible,plant
+vitis,머루류,Vitis,kr_ea,0,edible,plant
+ampelopsis,개머루,Ampelopsis glandulosa,kr,0,inedible,plant
+akebia,으름덩굴,Akebia quinata,kr,0,edible,plant
+rubus,산딸기류,Rubus,kr_ea,0,edible,plant
+morus,뽕나무류(오디),Morus,kr_ea,0,edible,plant
+elaeagnus,보리수나무류,Elaeagnus,kr_ea,0,edible,plant
+crataegus,산사나무,Crataegus pinnatifida,kr,0,edible,plant
+pyrus,돌배나무류,Pyrus,kr_ea,0,edible,plant
+diospyros_lotus,고욤나무,Diospyros lotus,kr,0,edible,plant
+sorbus_commixta,마가목,Sorbus commixta,kr,0,edible_caution,plant
+schisandra,오미자,Schisandra chinensis,kr,0,edible,plant
+zanthoxylum,산초·초피나무,Zanthoxylum,kr_ea,0,edible,plant
+rosa_multiflora,찔레꽃,Rosa multiflora,kr,1,edible,plant
+cornus_kousa,산딸나무,Cornus kousa,kr,0,edible,plant
+vaccinium,산앵도·정금나무류,Vaccinium,kr_ea,0,edible,plant
+pueraria,칡,Pueraria montana,kr,1,edible_caution,plant
+sasa,조릿대,Sasa,kr_ea,0,edible_caution,plant
+betula,자작나무류,Betula,kr_ea,0,edible,plant
+acer_pictum,고로쇠나무,Acer pictum,kr,0,edible,plant
+lindera,생강나무,Lindera obtusiloba,kr,1,edible,plant
+euonymus_alatus,화살나무,Euonymus alatus,kr,1,edible_caution,plant
+robinia,아까시나무,Robinia pseudoacacia,kr,0,edible_caution,plant
+rhododendron_mucronulatum,진달래,Rhododendron mucronulatum,kr,1,edible_caution,plant
+rhododendron_toxic,철쭉·산철쭉,Rhododendron schlippenbachii;Rhododendron yedoense,kr,1,toxic,plant
+kalopanax,음나무(엄나무),Kalopanax septemlobus,kr,1,edible_caution,plant
+aralia_elata,두릅나무,Aralia elata,kr,1,edible_caution,plant
+aralia_cordata,땅두릅(독활),Aralia cordata,kr,1,edible_caution,plant
+eleutherococcus,오갈피나무류,Eleutherococcus,kr_ea,1,edible_caution,plant
+smilax_china,청미래덩굴,Smilax china,kr,1,edible,plant
+taxus,주목,Taxus cuspidata,kr,0,deadly,plant
+toxicodendron,옻나무·개옻나무,Toxicodendron,kr_ea,1,toxic,plant
+rhus_chinensis,붉나무,Rhus chinensis,kr,1,toxic,plant
+dioscorea_edible,마·참마,Dioscorea polystachya;Dioscorea japonica,kr,0,edible,plant
+dioscorea_other,부채마·단풍마,Dioscorea nipponica;Dioscorea quinquelobata,kr,0,inedible,plant
+codonopsis,더덕,Codonopsis lanceolata,kr,1,edible,plant
+platycodon,도라지,Platycodon grandiflorus,kr,0,edible,plant
+adenophora,잔대·모시대류,Adenophora,kr_ea,1,edible,plant
+polygonatum,둥굴레류,Polygonatum,kr_ea,1,edible_caution,plant
+lilium,나리류(참나리 등),Lilium,kr_ea,0,edible_caution,plant
+erythronium,얼레지,Erythronium japonicum,kr,1,edible_caution,plant
+allium_victorialis,산마늘(명이),Allium microdictyon;Allium ochotense;Allium victorialis,kr,1,edible,plant
+allium_monanthum,달래·산달래,Allium monanthum;Allium macrostemon,kr,1,edible,plant
+allium_thunbergii,산부추류,Allium thunbergii;Allium senescens,kr,0,edible,plant
+atractylodes,삽주,Atractylodes,kr_ea,1,edible_caution,plant
+cirsium,엉겅퀴·곤드레류,Cirsium,kr_ea,1,edible,plant
+calystegia,메꽃류,Calystegia,kr_ea,0,edible_caution,plant
+artemisia,쑥류,Artemisia,kr_ea,1,edible,plant
+plantago,질경이류,Plantago,kr_ea,1,edible,plant
+taraxacum,민들레류,Taraxacum,kr_ea,1,edible,plant
+pteridium,고사리,Pteridium aquilinum,kr,1,edible_caution,plant
+osmunda,고비,Osmunda japonica,kr,1,edible_caution,plant
+matteuccia,청나래고사리,Matteuccia struthiopteris,kr,1,edible_caution,plant
+aster_scaber,참취,Aster scaber,kr,1,edible,plant
+ligularia,곰취,Ligularia fischeri,kr,1,edible,plant
+solidago,미역취,Solidago virgaurea,kr,1,edible,plant
+pimpinella,참나물,Pimpinella brachycarpa,kr,1,edible,plant
+hemerocallis,원추리류,Hemerocallis,kr_ea,1,edible_caution,plant
+petasites,머위,Petasites japonicus,kr,1,edible_caution,plant
+syneilesis,우산나물,Syneilesis palmata,kr,1,edible,plant
+sedum,돌나물·기린초류,Sedum;Phedimus,kr_ea,1,edible,plant
+hosta,비비추류,Hosta,kr_ea,1,edible,plant
+ixeris,씀바귀·고들빼기류,Ixeris;Ixeridium;Crepidiastrum,kr_ea,1,edible,plant
+lactuca_indica,왕고들빼기,Lactuca indica,kr,1,edible,plant
+chenopodium,명아주류,Chenopodium,kr_ea,1,edible_caution,plant
+portulaca,쇠비름,Portulaca oleracea,kr,0,edible,plant
+rumex,소리쟁이·수영류,Rumex,kr_ea,1,edible_caution,plant
+capsella,냉이,Capsella bursa-pastoris,kr,1,edible,plant
+stellaria,별꽃류,Stellaria,kr_ea,1,edible,plant
+oxalis,괭이밥류,Oxalis,kr_ea,0,edible_caution,plant
+oenanthe,미나리,Oenanthe javanica,kr,1,edible,plant
+anthriscus,전호,Anthriscus sylvestris,kr,1,edible_caution,plant
+heracleum,어수리,Heracleum moellendorffii,kr,1,edible_caution,plant
+angelica_gigas,참당귀,Angelica gigas,kr,1,edible_caution,plant
+veratrum,박새·여로류,Veratrum,kr_ea,1,deadly,plant
+caltha,동의나물,Caltha palustris,kr,1,toxic,plant
+convallaria,은방울꽃,Convallaria majalis;Convallaria keiskei,kr,1,deadly,plant
+phytolacca,자리공류(미국자리공),Phytolacca,kr_ea,1,toxic,plant
+cicuta,독미나리,Cicuta virosa,kr,1,deadly,plant
+conium,나도독미나리,Conium maculatum,kr,1,deadly,plant
+angelica_toxic,개구릿대·지리강활,Angelica anomala;Angelica purpuraefolia,kr,1,deadly,plant
+aconitum,투구꽃·초오류,Aconitum,kr_ea,1,deadly,plant
+arisaema,천남성류,Arisaema,kr_ea,1,toxic,plant
+pinellia,반하,Pinellia ternata,kr,1,toxic,plant
+paris,삿갓나물,Paris verticillata,kr,1,toxic,plant
+farfugium,털머위,Farfugium japonicum,kr,1,toxic,plant
+corydalis,현호색·괴불주머니류,Corydalis,kr_ea,1,toxic,plant
+amana,산자고,Amana edulis;Tulipa edulis,kr,1,toxic,plant
+thalictrum,꿩의다리류,Thalictrum,kr_ea,1,toxic,plant
+scopolia,미치광이풀,Scopolia japonica;Scopolia parviflora,kr,1,deadly,plant
+datura,독말풀류,Datura,kr_ea,0,deadly,plant
+pulsatilla,할미꽃류,Pulsatilla,kr_ea,1,toxic,plant
+chelidonium,애기똥풀,Chelidonium majus;Chelidonium asiaticum,kr,1,toxic,plant
+ranunculus,미나리아재비류,Ranunculus,kr_ea,1,toxic,plant
+clematis,으아리류,Clematis,kr_ea,1,toxic,plant
+aristolochia,쥐방울덩굴,Aristolochia contorta,kr,1,toxic,plant
+euphorbia,대극류,Euphorbia,kr_ea,1,toxic,plant
+symplocarpus,앉은부채,Symplocarpus renifolius,kr,1,toxic,plant
+dictamnus,백선,Dictamnus dasycarpus;Dictamnus albus,kr,1,toxic,plant
+solanum_nigrum,까마중,Solanum nigrum,kr,0,toxic,plant
+adonis,복수초,Adonis amurensis;Adonis multiflora,kr,1,deadly,plant
+lycoris,상사화·석산류,Lycoris,kr_ea,1,toxic,plant
+amanita,광대버섯류,Amanita,kr_ea,0,mushroom_deadly,mushroom
+trichoderma,붉은사슴뿔버섯,Trichoderma cornu-damae;Podostroma cornu-damae,kr,0,mushroom_deadly,mushroom
+omphalotus,화경버섯,Omphalotus guepiniiformis;Omphalotus japonicus,kr,0,mushroom_toxic,mushroom
+hypholoma_fasciculare,노란다발,Hypholoma fasciculare,kr,0,mushroom_toxic,mushroom
+entoloma,외대버섯류,Entoloma,kr_ea,0,mushroom_toxic,mushroom
+gymnopilus,갈황색미치광이버섯,Gymnopilus junonius,kr,0,mushroom_toxic,mushroom
+tricholoma_matsutake,송이,Tricholoma matsutake,kr,0,mushroom_edible,mushroom
+sarcodon,능이,Sarcodon aspratus;Sarcodon imbricatus,kr,0,mushroom_edible,mushroom
+lentinula,표고,Lentinula edodes,kr,0,mushroom_edible,mushroom
+pleurotus,느타리류,Pleurotus,kr_ea,0,mushroom_edible,mushroom
+ramaria,싸리버섯류,Ramaria,kr_ea,0,mushroom_toxic,mushroom
+ganoderma,영지류,Ganoderma,kr_ea,0,mushroom_other,mushroom
+cantharellus,꾀꼬리버섯류,Cantharellus,kr_ea,0,mushroom_edible,mushroom
+hericium,노루궁뎅이,Hericium erinaceus,kr,0,mushroom_edible,mushroom
+auricularia,목이류,Auricularia,kr_ea,0,mushroom_edible,mushroom
+armillaria,뽕나무버섯류,Armillaria,kr_ea,0,mushroom_edible,mushroom
+hypholoma_lateritium,개암버섯,Hypholoma lateritium;Hypholoma sublateritium,kr,0,mushroom_edible,mushroom
+other_plant,기타 식물,Plantae,other,0,other,other
+other_fungi,기타 버섯,Fungi,other,0,other,other

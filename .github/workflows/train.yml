@@ -1,0 +1,77 @@
+name: train-model
+
+# Trains the offline plant model in the cloud and publishes it as a GitHub release.
+# Runs whenever the training files change, or by hand from the Actions tab.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "training/**"
+      - ".github/workflows/train.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: train-model
+  cancel-in-progress: true
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore photo and feature cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            work/images
+            work/emb_cache
+            ~/.cache/huggingface
+          key: plantdata-v1-${{ github.run_id }}
+          restore-keys: |
+            plantdata-v1-
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch==2.15.0 torchvision==0.29.2 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r training/requirements.txt
+
+      - name: Train
+        run: bash training/run_all.sh
+
+      - name: Save photo and feature cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            work/images
+            work/emb_cache
+            ~/.cache/huggingface
+          key: plantdata-v1-${{ github.run_id }}
+
+      - name: Publish release
+        if: success()
+        run: |
+          TAG="model-v${GITHUB_RUN_NUMBER}"
+          gh release create "$TAG" work/release/* --title "AI 모델 ${TAG}" --notes-file work/release/report.md
+
+      - name: Report status
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          mkdir -p work/ci
+          if [ "${JOB_STATUS}" = "success" ]; then echo "release=model-v${GITHUB_RUN_NUMBER}" >> work/ci/RELEASE.txt; fi
+          bash training/push_status.sh

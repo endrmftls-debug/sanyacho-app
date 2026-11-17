@@ -1,0 +1,8 @@
+work/
+__pycache__/
+*.pyc
+*.apk
+*.onnx
+app/www/model/
+app/www/ref/
+app/build/
