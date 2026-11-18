@@ -62,7 +62,7 @@ li { margin: 3px 0; }
 main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 16px 16px 96px; }
 .tabs {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 20; display: grid; grid-template-columns: repeat(4, 1fr);
-  background: var(--paper); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom);
+  background: var(--paper); border-top: 1px solid var(--line);
 }
 .tabs a {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 60px;
@@ -96,7 +96,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 16px 16p
 .viewfinder::after { top: 18px; right: 18px; border-left: 0; border-bottom: 0; border-top-right-radius: 8px; }
 .viewfinder .c3 { bottom: 18px; left: 18px; border-right: 0; border-top: 0; border-bottom-left-radius: 8px; }
 .viewfinder .c4 { bottom: 18px; right: 18px; border-left: 0; border-top: 0; border-bottom-right-radius: 8px; }
-.viewfinder b { display: block; font: 400 30px/1.2 var(--sign); }
+.viewfinder b { display: block; font: 400 clamp(24px, 7.4vw, 30px)/1.2 var(--sign); }
 .viewfinder small { display: block; margin-top: 8px; color: #cfe0d3; font-size: 15px; }
 .tiles { display: grid; grid-auto-flow: column; grid-auto-columns: 132px; gap: 10px; overflow-x: auto;
   padding-bottom: 6px; scroll-snap-type: x mandatory; }
@@ -146,7 +146,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 16px 16p
 .sign.fungus { --c: var(--fungus); }
 .sign.unknown { --c: var(--unknown); }
 .sign .kicker { font-size: 17px; font-weight: 600; margin: 0 0 4px; opacity: .95; }
-.sign h1 { font: 400 36px/1.15 var(--sign); letter-spacing: 0.01em; word-break: keep-all; }
+.sign h1 { font: 400 clamp(28px, 8.6vw, 36px)/1.15 var(--sign); letter-spacing: 0.01em; word-break: keep-all; }
 .sign .sub { margin: 8px 0 0; font-size: 16px; }
 .sign .hold { margin: 14px -6px -6px; background: #fff; color: var(--ink); border-radius: 10px; padding: 12px 14px;
   font-weight: 600; border-left: 6px solid var(--caution); }
@@ -180,7 +180,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 16px 16p
 .photos figure { margin: 0; scroll-snap-align: start; }
 .photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r); background: #dfe7dc; }
 .photos figcaption { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
-.sp-head h1 { font: 400 34px/1.15 var(--sign); word-break: keep-all; }
+.sp-head h1 { font: 400 clamp(28px, 8.2vw, 34px)/1.15 var(--sign); word-break: keep-all; }
 .sp-head .aka { color: var(--muted); font-size: 15px; margin-top: 4px; }
 .sp-head .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 4px; }
 .lead { font-size: 18px; margin: 12px 0 4px; }
@@ -237,7 +237,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 16px 16p
 /* ---------- SOS ---------- */
 .plate { background: var(--signal); color: #000; border: 5px solid #000; border-radius: 14px; padding: 16px 18px; }
 .plate .lab { font-weight: 600; font-size: 16px; }
-.plate .big { font: 400 40px/1.15 var(--sign); letter-spacing: 0.01em; font-variant-numeric: tabular-nums; margin: 6px 0; word-break: break-all; }
+.plate .big { font: 400 clamp(24px, 8.4vw, 38px)/1.15 var(--sign); letter-spacing: 0.01em; font-variant-numeric: tabular-nums; margin: 6px 0; word-break: keep-all; }
 .plate .dms { font-weight: 600; font-size: 17px; font-variant-numeric: tabular-nums; }
 .plate .acc { font-size: 15px; margin-top: 6px; }
 .script { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; margin-top: 14px; font-size: 18px; }

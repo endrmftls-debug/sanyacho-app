@@ -70,6 +70,8 @@ public class MainActivity extends Activity {
                     Insets i = insets.getInsets(WindowInsets.Type.systemBars() | WindowInsets.Type.ime()
                             | WindowInsets.Type.displayCutout());
                     v.setPadding(i.left, i.top, i.right, i.bottom);
+                    // Already kept clear of the bars here, so the page must not add the same space again.
+                    return WindowInsets.CONSUMED;
                 }
                 return insets;
             }
