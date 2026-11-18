@@ -36,7 +36,7 @@ export const data = state;
 export const entry = (id) => state.byId.get(id);
 
 export function photos(id) {
-  return (state.refs[id] || []).map((r) => ({ src: "ref/" + r.file, credit: r.attribution || "", url: r.obs_url }));
+  return (state.refs[id] || []).map((r) => ({ src: "ref/" + r.file, credit: r.attribution || "", url: r.obs_url, name: r.name || "" }));
 }
 
 export function firstPhoto(id) {

@@ -1,5 +1,5 @@
 // All screens. Each returns an optional cleanup function (stop camera, GPS, sound...).
-import { $, $$, esc, pct, VERDICT, verdictOf, badge, toast, fmtDate, keepScreenOn } from "./util.js";
+import { $, $$, esc, josa, pct, VERDICT, verdictOf, badge, toast, fmtDate, keepScreenOn } from "./util.js";
 import { data, entry, photos, firstPhoto, inSeason } from "./data.js";
 import { aiStatus, onAIChange, loadAI, classify, decide } from "./ai.js";
 import { addFind, listFinds, getFind, deleteFind } from "./store.js";
@@ -376,10 +376,14 @@ export function species(view, id, query) {
   const twins = [...(e.like || []), ...(e.like_auto || [])];
   const fromResult = query.get("from") === "result" && app.result && app.result.top.c.id === id;
   const months = (e.months || []).length ? `${e.months.join(", ")}월` : "";
+  // entries that cover several species label each photo; say which species have no photo
+  const named = new Set(pics.map((p) => p.name).filter(Boolean));
+  const noPhoto = named.size ? (e.aka || []).filter((a) => !named.has(a)) : [];
   view.innerHTML = `
     <article>
-      ${pics.length ? `<div class="photos">${pics.map((p) => `<figure><img src="${p.src}" alt="${esc(e.ko)} 사진" loading="lazy">
-        <figcaption>${esc(p.credit)}</figcaption></figure>`).join("")}</div>` : ""}
+      ${pics.length ? `<div class="photos">${pics.map((p) => `<figure><img src="${p.src}" alt="${esc(p.name || e.ko)} 사진" loading="lazy">
+        <figcaption>${p.name ? `<b>${esc(p.name)}</b><br>` : ""}${esc(p.credit)}</figcaption></figure>`).join("")}</div>` : ""}
+      ${noPhoto.length ? `<p class="pnote">${esc(noPhoto.join(", "))}${josa(noPhoto[noPhoto.length - 1], "은", "는")} 자유롭게 쓸 수 있는 사진이 없어 싣지 못했어요. 아래 생김새 설명으로 확인하세요.</p>` : ""}
       <header class="sp-head">
         <h1>${esc(e.ko)}</h1>
         ${e.aka?.length ? `<p class="aka">다른 이름: ${esc(e.aka.join(", "))}</p>` : ""}

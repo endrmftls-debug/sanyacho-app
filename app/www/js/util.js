@@ -6,6 +6,12 @@ export function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+// Korean particle after a word: josa("지리강활", "은", "는") -> "은"
+export function josa(word, withFinal, withoutFinal) {
+  const code = String(word).charCodeAt(String(word).length - 1) - 0xac00;
+  return code >= 0 && code <= 11171 && code % 28 ? withFinal : withoutFinal;
+}
+
 export function pct(p) {
   if (p >= 0.995) return "99%";
   if (p < 0.01) return "1% 미만";

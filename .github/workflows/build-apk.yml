@@ -33,11 +33,20 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Prepare app files (도감, runtime, fonts, newest model)
         run: |
           python3 app/data_src/build_db.py
           bash app/fetch_deps.sh
           bash app/fetch_model.sh
+
+      - name: Add 도감 photos for entries the AI model has none for
+        run: |
+          python3 -m pip install --quiet requests pillow
+          python3 app/fetch_extra_refs.py
 
       - name: Build APK
         run: |
