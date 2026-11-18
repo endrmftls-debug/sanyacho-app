@@ -154,7 +154,8 @@ def month_plan(c, cfg):
     return [(s, 0.25) for s in SEASONS]
 
 
-def collect_class(api, c, cfg, places, taxon_ids):
+def collect_class(api, c, cfg, places, taxon_ids, widen=False):
+    """widen: also search the rest of the world (used when Korea and East Asia have too few photos)."""
     target = cfg["target_per_class"]
     per_obs = cfg["max_photos_per_obs"]
     kr = [p[0] for p in places["kr"]]
@@ -162,7 +163,7 @@ def collect_class(api, c, cfg, places, taxon_ids):
     stages = [("KR", kr)]
     if c["mode"] in ("kr", "kr_ea"):
         stages.append(("EA", ea))
-    if c["mode"] == "kr":
+    if c["mode"] == "kr" or widen:
         stages.append(("GLOBAL", None))
     tid = ",".join(map(str, taxon_ids))
     seen, recs = set(), []
@@ -306,21 +307,30 @@ def main():
         cid = c["id"]
         key = class_key(c, cfg)
         cached = cache.get(cid)
-        if cached and cached.get("key") == key and cached.get("recs"):
-            records[cid] = cached["recs"]
-            continue
         ids = [t["id"] for t in resolved[cid]["taxa"]]
-        if not ids:
+        if cached and cached.get("key") == key and cached.get("recs"):
+            recs = cached["recs"]
+        elif not ids:
             records[cid] = []
             continue
-        if c["group"] == "other":
-            recs = collect_other(api, c, cfg, places, ids[0], exclude["plant" if cid == "other_plant" else "mushroom"])
         else:
-            recs = collect_class(api, c, cfg, places, ids)
+            if c["group"] == "other":
+                recs = collect_other(api, c, cfg, places, ids[0], exclude["plant" if cid == "other_plant" else "mushroom"])
+            else:
+                recs = collect_class(api, c, cfg, places, ids)
+            cache[cid] = {"key": key, "recs": recs, "resolved": resolved[cid]}
+            write_json(RECORDS_CACHE, cache)
+            print(f"[{i + 1}/{len(classes)}] {cid}: {len(recs)} photos listed", flush=True)
+        # Korea + East Asia only classes that came up short: look in the rest of the world too
+        if (c["mode"] == "kr_ea" and c["group"] != "other" and ids and len(recs) < cfg["min_per_class"]
+                and not cache[cid].get("widened")):
+            wider = collect_class(api, c, cfg, places, ids, widen=True)
+            print(f"  {cid}: {len(recs)} photos in Korea/East Asia, {len(wider)} including the rest of the world", flush=True)
+            if len(wider) > len(recs):
+                recs = wider
+            cache[cid].update(recs=recs, widened=True)
+            write_json(RECORDS_CACHE, cache)
         records[cid] = recs
-        cache[cid] = {"key": key, "recs": recs, "resolved": resolved[cid]}
-        write_json(RECORDS_CACHE, cache)
-        print(f"[{i + 1}/{len(classes)}] {cid}: {len(recs)} photos listed", flush=True)
     status("collect", note="photo lists ready", listed={k: len(v) for k, v in records.items()}, api_calls=api.calls)
 
     tasks = []
@@ -337,7 +347,7 @@ def main():
             if done % 1000 == 0:
                 print(f"  downloaded {done}/{len(tasks)}", flush=True)
 
-    manifest, counts, used = [], {}, []
+    manifest, counts, used, provisional = [], {}, [], set()
     for c in classes:
         cid = c["id"]
         ok = [r for r in records[cid] if r.get("ok")]
@@ -350,6 +360,12 @@ def main():
         counts[cid] = {"total": len(ok), **n}
         if len(ok) >= cfg["min_per_class"] and n["val"] > 0 and n["test"] > 0:
             used.append(c)
+        elif (c["group"] != "other" and len(ok) >= cfg.get("min_provisional", 10**9)
+              and n["train"] >= cfg.get("min_provisional_train", 1)):
+            # too few photos to trust, but better than not knowing the plant at all:
+            # the app shows these as "AI 참고용" and never as a confident edible result
+            used.append(c)
+            provisional.add(cid)
     used_ids = {c["id"] for c in used}
     manifest = [m for m in manifest if m["cls"] in used_ids]
     with open(OUT / "manifest.jsonl", "w", encoding="utf-8") as f:
@@ -366,7 +382,8 @@ def main():
             prompts[c["id"]] = [f"a photo of {' '.join(t['lineage'])}." for t in resolved[c["id"]]["taxa"]]
     write_json(OUT / "prompts.json", prompts)
     write_json(OUT / "classes_used.json", [{**{k: c[k] for k in ("id", "ko", "category", "group")},
-                                           "taxa": resolved[c["id"]]["taxa"], "counts": counts[c["id"]]}
+                                           "taxa": resolved[c["id"]]["taxa"], "counts": counts[c["id"]],
+                                           "provisional": c["id"] in provisional}
                                           for c in used])
 
     attributions = {}
@@ -387,11 +404,14 @@ def main():
     write_json(REF / "attribution.json", attributions)
 
     dropped = {c["id"]: counts[c["id"]] for c in classes if c["id"] not in used_ids}
-    summary = {"places": places, "counts": counts, "dropped": dropped, "n_classes": len(used),
+    summary = {"places": places, "counts": counts, "dropped": dropped,
+               "provisional": {cid: counts[cid] for cid in sorted(provisional)},
+               "min_per_class": cfg["min_per_class"], "n_classes": len(used),
                "n_images": len(manifest), "api_calls": api.calls}
     write_json(OUT / "collect_summary.json", summary)
     write_json(CI / "collect_summary.json", summary)
-    status("collect", note="done", n_classes=len(used), n_images=len(manifest), dropped=list(dropped))
+    status("collect", note="done", n_classes=len(used), n_images=len(manifest), dropped=list(dropped),
+           provisional=sorted(provisional))
 
 
 if __name__ == "__main__":

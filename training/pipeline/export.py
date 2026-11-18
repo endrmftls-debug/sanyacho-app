@@ -18,7 +18,7 @@ from onnxruntime.quantization import QuantType, quantize_dynamic
 from onnxruntime.quantization.matmul_nbits_quantizer import DefaultWeightOnlyQuantConfig, MatMulNBitsQuantizer
 from PIL import Image
 
-from common import OUT, RELEASE, WORK, load_config, run_main, status, write_json
+from common import OUT, RELEASE, WORK, load_config, run_main, status, verdict_categories, write_json
 from embed import MEAN, STD, build
 from train_head import evaluate, softmax
 
@@ -91,7 +91,7 @@ def main():
 
     classes = json.load(open(OUT / "classes_order.json", encoding="utf-8"))
     info = {c["id"]: c for c in json.load(open(OUT / "classes_used.json", encoding="utf-8"))}
-    cats = [info[c]["category"] for c in classes]
+    cats = verdict_categories(classes, info)
     manifest = [json.loads(l) for l in open(OUT / "manifest.jsonl", encoding="utf-8")]
     test = [m for m in manifest if m["split"] == "test"]
     cidx = {c: i for i, c in enumerate(classes)}
@@ -150,6 +150,7 @@ def main():
         "thresholds": {"confident": t_conf, "toxic_warn": warn},
         "classes": [{"id": c, "ko": info[c]["ko"], "category": info[c]["category"], "group": info[c]["group"],
                      "photos": info[c]["counts"]["total"],
+                     "provisional": bool(info[c].get("provisional")),
                      "test_acc": chosen_res["per_class"].get(c, {}).get("acc"),
                      "taxa": [t["name"] for t in info[c]["taxa"]]} for c in classes],
         "metrics": {"test_top1": chosen_res["top1"], "test_top3": chosen_res["top3"],

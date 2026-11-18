@@ -22,6 +22,13 @@ DANGER = {"toxic", "deadly"}
 MUSHROOM = {"mushroom_edible", "mushroom_toxic", "mushroom_deadly", "mushroom_other"}
 
 
+def verdict_categories(classes, info):
+    """Categories as the app treats them: a provisional (few-photo) edible class is never shown as edible,
+    so the safety numbers count it as 'provisional', not 'edible'."""
+    return ["provisional" if info[c].get("provisional") and info[c]["category"] in EDIBLE else info[c]["category"]
+            for c in classes]
+
+
 def ensure_dirs():
     for d in (WORK, IMAGES, REF, EMB, OUT, RELEASE, CI):
         d.mkdir(parents=True, exist_ok=True)

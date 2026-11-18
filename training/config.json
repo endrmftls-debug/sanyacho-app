@@ -5,6 +5,8 @@
   "target_per_class": 180,
   "target_other": 420,
   "min_per_class": 40,
+  "min_provisional": 12,
+  "min_provisional_train": 8,
   "max_photos_per_obs": 2,
   "spring_fraction": 0.5,
   "spring_months": [3, 4, 5, 6],

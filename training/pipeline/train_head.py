@@ -9,7 +9,7 @@ import json
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-from common import CI, DANGER, EDIBLE, OUT, load_config, run_main, status, write_json
+from common import CI, DANGER, EDIBLE, OUT, load_config, run_main, status, verdict_categories, write_json
 
 
 def softmax(z):
@@ -90,7 +90,9 @@ def evaluate(P, y, classes, cats, cfg, t_conf, warn):
                           "n_edible": int(ma.sum()), "n_lookalike": int(mb.sum()),
                           "edible_called_lookalike": int((top[ma] == ib).sum()),
                           "lookalike_called_edible": int((top[mb] == ia).sum()),
-                          "lookalike_called_edible_confident": int(((top[mb] == ia) & (pmax[mb] >= t_conf)).sum())})
+                          # a provisional edible class is never shown as a confident edible result
+                          "lookalike_called_edible_confident":
+                              int(((top[mb] == ia) & (pmax[mb] >= t_conf)).sum()) if edible[ia] else 0})
     res["pairs"] = pairs
     return res
 
@@ -99,7 +101,7 @@ def main():
     cfg = load_config()
     classes = json.load(open(OUT / "classes_order.json", encoding="utf-8"))
     info = {c["id"]: c for c in json.load(open(OUT / "classes_used.json", encoding="utf-8"))}
-    cats = [info[c]["category"] for c in classes]
+    cats = verdict_categories(classes, info)
     d = {s: np.load(OUT / f"emb_{s}.npz") for s in ("train", "val", "test")}
     Xtr, ytr = d["train"]["X"], d["train"]["y"]
     Xva, yva = d["val"]["X"], d["val"]["y"]
@@ -133,6 +135,7 @@ def main():
     np.savez(OUT / "head.npz", W=W.astype(np.float32), b=b.astype(np.float32), T=np.float32(T))
     metrics = {"C": C, "beta": beta, "temperature": T, "val_acc_linear": acc, "val_acc_zero_shot": zs_acc,
                "threshold_confident": t_conf, "threshold_toxic_warn": warn, "danger_target": target,
+               "provisional": [c for c in classes if info[c].get("provisional")],
                "val": val, "test": test, "val_safety_curve": curve,
                "sizes": {"train": int(len(ytr)), "val": int(len(yva)), "test": int(len(yte))}}
     write_json(OUT / "metrics_head.json", metrics)

@@ -15,7 +15,8 @@ def main():
     me = json.load(open(OUT / "metrics_export.json", encoding="utf-8"))
     cs = json.load(open(OUT / "collect_summary.json", encoding="utf-8"))
     labels = json.load(open(RELEASE / "labels.json", encoding="utf-8"))
-    ko = {c["id"]: c["ko"] for c in labels["classes"]}
+    plain = {c["id"]: c["ko"] for c in labels["classes"]}
+    ko = {c["id"]: c["ko"] + (" (AI 참고용)" if c.get("provisional") else "") for c in labels["classes"]}
     t8 = me["chosen_test"]
     L = []
     L.append("# 산야초 AI 모델 학습 리포트\n")
@@ -47,6 +48,12 @@ def main():
     for cid, r in sorted(t8["per_class"].items(), key=lambda kv: kv[1]["acc"]):
         conf = ", ".join(f"{ko.get(k, k)} {v}" for k, v in r["confused_with"].items())
         L.append(f"| {ko.get(cid, cid)} | {r['n']} | {pct(r['acc'])} | {conf} |")
+    if cs.get("provisional"):
+        L.append("\n## AI 참고용으로 넣은 종류\n")
+        L.append(f"사진이 {cs.get('min_per_class', 40)}장보다 적어 덜 배운 종류예요. 앱은 이 종류를 '먹을 수 있는 후보'로 "
+                 "보여주지 않고 'AI 참고용'으로 따로 표시해요. 독초라면 경고는 그대로 보여줘요.\n")
+        for cid, n in cs["provisional"].items():
+            L.append(f"- {plain.get(cid, cid)}: 사진 {n['total']}장 (학습 {n['train']}, 검증 {n['val']}, 시험 {n['test']})")
     if cs.get("dropped"):
         L.append("\n## 사진이 부족해 이번에 빠진 종류\n")
         for cid, n in cs["dropped"].items():
