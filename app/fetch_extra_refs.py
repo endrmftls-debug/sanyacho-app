@@ -1,8 +1,8 @@
 """Add 도감 reference photos for entries the AI model has no photos for (classes dropped from training).
 
 Runs during the APK build (needs internet). Uses CC-licensed iNaturalist photos that allow adaptation
-(no "ND"): first the photos the community picked to represent the taxon, then research-grade observations
-(South Korea first). Records the credit for each photo.
+(no "ND"): research-grade observations from South Korea alternating with the photos the community picked
+to represent the taxon, then observations from anywhere. Records the credit for each photo.
 When an entry covers several species (e.g. 개구릿대·지리강활), each photo is labelled with its species.
 Never fails the build: if iNaturalist can't be reached, the app simply shows those entries without photos.
 """
@@ -76,34 +76,44 @@ def record(p, link):
             "license": p["license_code"].lower(), "obs_url": link}
 
 
-def candidates(taxon_id, place):
-    """Photos the iNaturalist community chose to represent the taxon, then best-voted research-grade
-    observations (Korea first, then anywhere). Only licences that allow resizing, with credit."""
-    out, seen = [], set()
-    res = get(f"/taxa/{taxon_id}", {}).get("results", [])
-    for tp in (res[0].get("taxon_photos") or []) if res else []:
-        p = tp.get("photo") or {}
-        if usable(p) and p.get("id") not in seen:
-            seen.add(p.get("id"))
-            out.append(record(p, f"https://www.inaturalist.org/photos/{p.get('id')}"))
-            if len(out) >= PER_CLASS:
-                return out
-    seen_obs = set()
-    for pl in ([place] if place else []) + [None]:
-        params = {"taxon_id": taxon_id, "quality_grade": "research", "photos": "true",
-                  "photo_license": ",".join(LICENSES), "per_page": 30, "order_by": "votes"}
-        if pl:
-            params["place_id"] = pl
-        for o in get("/observations", params).get("results", []):
-            p = next((p for p in o.get("photos", []) if usable(p)), None)
-            if not p or o["id"] in seen_obs or p.get("id") in seen:
-                continue
-            seen_obs.add(o["id"])
-            seen.add(p.get("id"))
+def observed(taxon_id, place):
+    """First usable photo of the best-voted research-grade observations."""
+    params = {"taxon_id": taxon_id, "quality_grade": "research", "photos": "true",
+              "photo_license": ",".join(LICENSES), "per_page": 30, "order_by": "votes"}
+    if place:
+        params["place_id"] = place
+    out = []
+    for o in get("/observations", params).get("results", []):
+        p = next((p for p in o.get("photos", []) if usable(p)), None)
+        if p:
             out.append(record(p, f"https://www.inaturalist.org/observations/{o['id']}"))
-            if len(out) >= PER_CLASS:
-                return out
+        if len(out) >= PER_CLASS:
+            break
     return out
+
+
+def curated(taxon_id):
+    """Photos the iNaturalist community picked to represent the taxon."""
+    res = get(f"/taxa/{taxon_id}", {}).get("results", [])
+    photos = [tp.get("photo") or {} for tp in ((res[0].get("taxon_photos") or []) if res else [])]
+    return [record(p, f"https://www.inaturalist.org/photos/{p.get('id')}") for p in photos if usable(p)][:PER_CLASS]
+
+
+def candidates(taxon_id, place):
+    """Korean observations (the local form) take turns with the community's representative photos;
+    observations from anywhere fill the rest. Observation photos alone can be odd (a carved stump),
+    representative photos alone can show an unusual variety, so mixing them gives the steadiest set."""
+    local = observed(taxon_id, place) if place else []
+    picks = curated(taxon_id)
+    mixed = [g[i] for i in range(PER_CLASS) for g in (local, picks) if i < len(g)]
+    if len({r["key"] for r in mixed}) < PER_CLASS:
+        mixed += observed(taxon_id, None)
+    out, seen = [], set()
+    for r in mixed:
+        if r["key"] not in seen:
+            seen.add(r["key"])
+            out.append(r)
+    return out[:PER_CLASS]
 
 
 def plan(c):
@@ -138,6 +148,7 @@ def main():
                 if t["id"] in ids:
                     continue
                 ids.add(t["id"])
+                print(f"  {c['id']}: {name} -> {t['name']} ({t['id']})")
                 groups.append([dict(r, name=label) for r in candidates(t["id"], place)])
             if any(r["name"] for g in groups for r in g):
                 order = [g[i] for i in range(PER_CLASS) for g in groups if i < len(g)]  # take turns per species
