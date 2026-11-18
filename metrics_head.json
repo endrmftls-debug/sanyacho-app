@@ -1,0 +1,2420 @@
+{
+ "C": 8.0,
+ "beta": 2.0,
+ "temperature": 0.7972651367453139,
+ "val_acc_linear": 0.856142398599358,
+ "val_acc_zero_shot": 0.6410854975196966,
+ "threshold_confident": 0.79,
+ "threshold_toxic_warn": 0.05,
+ "danger_target": 0.005,
+ "provisional": [
+  "pimpinella",
+  "angelica_gigas",
+  "angelica_toxic"
+ ],
+ "val": {
+  "n": 3427,
+  "top1": 0.856142398599358,
+  "top3": 0.9466005252407353,
+  "per_class": {
+   "quercus": {
+    "n": 32,
+    "acc": 0.71875,
+    "confused_with": {
+     "pinus_densiflora": 2,
+     "euonymus_alatus": 2
+    }
+   },
+   "castanea": {
+    "n": 27,
+    "acc": 0.8148148148148148,
+    "confused_with": {
+     "robinia": 2,
+     "betula": 2
+    }
+   },
+   "pinus_koraiensis": {
+    "n": 26,
+    "acc": 0.8076923076923077,
+    "confused_with": {
+     "pinus_densiflora": 5
+    }
+   },
+   "pinus_densiflora": {
+    "n": 20,
+    "acc": 0.7,
+    "confused_with": {
+     "pinus_koraiensis": 4,
+     "diospyros_lotus": 2
+    }
+   },
+   "corylus": {
+    "n": 20,
+    "acc": 0.9,
+    "confused_with": {
+     "robinia": 1,
+     "rubus": 1
+    }
+   },
+   "juglans": {
+    "n": 21,
+    "acc": 0.8571428571428571,
+    "confused_with": {
+     "osmunda": 1,
+     "pueraria": 1
+    }
+   },
+   "actinidia": {
+    "n": 17,
+    "acc": 0.7058823529411765,
+    "confused_with": {
+     "lindera": 2,
+     "schisandra": 1
+    }
+   },
+   "vitis": {
+    "n": 28,
+    "acc": 0.6785714285714286,
+    "confused_with": {
+     "ampelopsis": 5,
+     "dioscorea_other": 1
+    }
+   },
+   "ampelopsis": {
+    "n": 32,
+    "acc": 0.65625,
+    "confused_with": {
+     "vitis": 7,
+     "morus": 2
+    }
+   },
+   "akebia": {
+    "n": 28,
+    "acc": 0.8571428571428571,
+    "confused_with": {
+     "polygonatum": 1,
+     "euonymus_alatus": 1
+    }
+   },
+   "rubus": {
+    "n": 17,
+    "acc": 0.5882352941176471,
+    "confused_with": {
+     "vitis": 2,
+     "farfugium": 1
+    }
+   },
+   "morus": {
+    "n": 34,
+    "acc": 0.7647058823529411,
+    "confused_with": {
+     "rosa_multiflora": 1,
+     "lindera": 1
+    }
+   },
+   "elaeagnus": {
+    "n": 29,
+    "acc": 0.896551724137931,
+    "confused_with": {
+     "dioscorea_other": 1,
+     "convallaria": 1
+    }
+   },
+   "crataegus": {
+    "n": 29,
+    "acc": 0.8275862068965517,
+    "confused_with": {
+     "pyrus": 2,
+     "vaccinium": 1
+    }
+   },
+   "pyrus": {
+    "n": 27,
+    "acc": 0.8518518518518519,
+    "confused_with": {
+     "juglans": 1,
+     "betula": 1
+    }
+   },
+   "diospyros_lotus": {
+    "n": 19,
+    "acc": 0.5789473684210527,
+    "confused_with": {
+     "euonymus_alatus": 2,
+     "other_fungi": 1
+    }
+   },
+   "sorbus_commixta": {
+    "n": 18,
+    "acc": 0.7777777777777778,
+    "confused_with": {
+     "toxicodendron": 1,
+     "angelica_gigas": 1
+    }
+   },
+   "schisandra": {
+    "n": 18,
+    "acc": 0.8888888888888888,
+    "confused_with": {
+     "actinidia": 1,
+     "trichoderma": 1
+    }
+   },
+   "zanthoxylum": {
+    "n": 25,
+    "acc": 0.84,
+    "confused_with": {
+     "osmunda": 2,
+     "conium": 1
+    }
+   },
+   "rosa_multiflora": {
+    "n": 41,
+    "acc": 0.8780487804878049,
+    "confused_with": {
+     "euonymus_alatus": 2,
+     "other_plant": 1
+    }
+   },
+   "cornus_kousa": {
+    "n": 30,
+    "acc": 0.8666666666666667,
+    "confused_with": {
+     "actinidia": 2,
+     "crataegus": 1
+    }
+   },
+   "vaccinium": {
+    "n": 30,
+    "acc": 0.7666666666666667,
+    "confused_with": {
+     "diospyros_lotus": 2,
+     "elaeagnus": 2
+    }
+   },
+   "pueraria": {
+    "n": 27,
+    "acc": 0.8888888888888888,
+    "confused_with": {
+     "phytolacca": 1,
+     "pinellia": 1
+    }
+   },
+   "sasa": {
+    "n": 31,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "betula": {
+    "n": 24,
+    "acc": 0.8333333333333334,
+    "confused_with": {
+     "quercus": 1,
+     "euonymus_alatus": 1
+    }
+   },
+   "acer_pictum": {
+    "n": 28,
+    "acc": 0.8214285714285714,
+    "confused_with": {
+     "corylus": 1,
+     "juglans": 1
+    }
+   },
+   "lindera": {
+    "n": 29,
+    "acc": 0.7931034482758621,
+    "confused_with": {
+     "schisandra": 1,
+     "morus": 1
+    }
+   },
+   "euonymus_alatus": {
+    "n": 26,
+    "acc": 0.8846153846153846,
+    "confused_with": {
+     "rhus_chinensis": 1,
+     "convallaria": 1
+    }
+   },
+   "robinia": {
+    "n": 30,
+    "acc": 0.8,
+    "confused_with": {
+     "pyrus": 2,
+     "toxicodendron": 1
+    }
+   },
+   "rhododendron_mucronulatum": {
+    "n": 30,
+    "acc": 0.8,
+    "confused_with": {
+     "rhododendron_toxic": 4,
+     "vaccinium": 1
+    }
+   },
+   "rhododendron_toxic": {
+    "n": 23,
+    "acc": 0.7391304347826086,
+    "confused_with": {
+     "akebia": 1,
+     "sedum": 1
+    }
+   },
+   "kalopanax": {
+    "n": 36,
+    "acc": 0.8611111111111112,
+    "confused_with": {
+     "datura": 1,
+     "ranunculus": 1
+    }
+   },
+   "aralia_elata": {
+    "n": 33,
+    "acc": 0.7272727272727273,
+    "confused_with": {
+     "rubus": 2,
+     "clematis": 1
+    }
+   },
+   "aralia_cordata": {
+    "n": 28,
+    "acc": 0.8214285714285714,
+    "confused_with": {
+     "aconitum": 1,
+     "dictamnus": 1
+    }
+   },
+   "eleutherococcus": {
+    "n": 36,
+    "acc": 0.8055555555555556,
+    "confused_with": {
+     "rosa_multiflora": 1,
+     "euonymus_alatus": 1
+    }
+   },
+   "smilax_china": {
+    "n": 20,
+    "acc": 0.85,
+    "confused_with": {
+     "crataegus": 1,
+     "pueraria": 1
+    }
+   },
+   "taxus": {
+    "n": 29,
+    "acc": 0.9655172413793104,
+    "confused_with": {
+     "pinus_koraiensis": 1
+    }
+   },
+   "toxicodendron": {
+    "n": 24,
+    "acc": 0.625,
+    "confused_with": {
+     "rhus_chinensis": 4,
+     "conium": 1
+    }
+   },
+   "rhus_chinensis": {
+    "n": 18,
+    "acc": 0.9444444444444444,
+    "confused_with": {
+     "juglans": 1
+    }
+   },
+   "dioscorea_edible": {
+    "n": 25,
+    "acc": 0.8,
+    "confused_with": {
+     "dioscorea_other": 2,
+     "atractylodes": 1
+    }
+   },
+   "dioscorea_other": {
+    "n": 25,
+    "acc": 0.88,
+    "confused_with": {
+     "kalopanax": 2,
+     "corylus": 1
+    }
+   },
+   "codonopsis": {
+    "n": 26,
+    "acc": 0.7307692307692307,
+    "confused_with": {
+     "paris": 2,
+     "aristolochia": 2
+    }
+   },
+   "platycodon": {
+    "n": 24,
+    "acc": 0.9583333333333334,
+    "confused_with": {
+     "euonymus_alatus": 1
+    }
+   },
+   "adenophora": {
+    "n": 21,
+    "acc": 0.8571428571428571,
+    "confused_with": {
+     "aster_scaber": 2,
+     "lactuca_indica": 1
+    }
+   },
+   "polygonatum": {
+    "n": 25,
+    "acc": 0.88,
+    "confused_with": {
+     "lilium": 1,
+     "hosta": 1
+    }
+   },
+   "lilium": {
+    "n": 21,
+    "acc": 0.7142857142857143,
+    "confused_with": {
+     "paris": 2,
+     "amana": 1
+    }
+   },
+   "erythronium": {
+    "n": 25,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "allium_victorialis": {
+    "n": 25,
+    "acc": 0.88,
+    "confused_with": {
+     "convallaria": 2,
+     "platycodon": 1
+    }
+   },
+   "allium_monanthum": {
+    "n": 38,
+    "acc": 0.8947368421052632,
+    "confused_with": {
+     "allium_victorialis": 2,
+     "thalictrum": 1
+    }
+   },
+   "allium_thunbergii": {
+    "n": 24,
+    "acc": 0.7916666666666666,
+    "confused_with": {
+     "allium_monanthum": 2,
+     "allium_victorialis": 2
+    }
+   },
+   "atractylodes": {
+    "n": 34,
+    "acc": 0.8235294117647058,
+    "confused_with": {
+     "platycodon": 2,
+     "smilax_china": 2
+    }
+   },
+   "cirsium": {
+    "n": 30,
+    "acc": 0.9333333333333333,
+    "confused_with": {
+     "lactuca_indica": 1,
+     "other_plant": 1
+    }
+   },
+   "calystegia": {
+    "n": 24,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "artemisia": {
+    "n": 33,
+    "acc": 0.8181818181818182,
+    "confused_with": {
+     "pulsatilla": 2,
+     "sedum": 1
+    }
+   },
+   "plantago": {
+    "n": 17,
+    "acc": 0.9411764705882353,
+    "confused_with": {
+     "aster_scaber": 1
+    }
+   },
+   "taraxacum": {
+    "n": 35,
+    "acc": 0.8285714285714286,
+    "confused_with": {
+     "pinellia": 2,
+     "lactuca_indica": 1
+    }
+   },
+   "pteridium": {
+    "n": 25,
+    "acc": 0.96,
+    "confused_with": {
+     "matteuccia": 1
+    }
+   },
+   "osmunda": {
+    "n": 31,
+    "acc": 0.9032258064516129,
+    "confused_with": {
+     "matteuccia": 1,
+     "morus": 1
+    }
+   },
+   "matteuccia": {
+    "n": 35,
+    "acc": 0.9142857142857143,
+    "confused_with": {
+     "petasites": 1,
+     "armillaria": 1
+    }
+   },
+   "aster_scaber": {
+    "n": 30,
+    "acc": 0.9333333333333333,
+    "confused_with": {
+     "lactuca_indica": 1,
+     "ranunculus": 1
+    }
+   },
+   "ligularia": {
+    "n": 18,
+    "acc": 0.9444444444444444,
+    "confused_with": {
+     "solidago": 1
+    }
+   },
+   "solidago": {
+    "n": 26,
+    "acc": 0.9230769230769231,
+    "confused_with": {
+     "plantago": 1,
+     "schisandra": 1
+    }
+   },
+   "hemerocallis": {
+    "n": 27,
+    "acc": 0.9629629629629629,
+    "confused_with": {
+     "allium_victorialis": 1
+    }
+   },
+   "petasites": {
+    "n": 36,
+    "acc": 0.9444444444444444,
+    "confused_with": {
+     "farfugium": 1,
+     "dioscorea_edible": 1
+    }
+   },
+   "syneilesis": {
+    "n": 34,
+    "acc": 0.9411764705882353,
+    "confused_with": {
+     "paris": 1,
+     "kalopanax": 1
+    }
+   },
+   "sedum": {
+    "n": 25,
+    "acc": 0.88,
+    "confused_with": {
+     "oenanthe": 1,
+     "solidago": 1
+    }
+   },
+   "hosta": {
+    "n": 35,
+    "acc": 0.9428571428571428,
+    "confused_with": {
+     "veratrum": 1,
+     "sasa": 1
+    }
+   },
+   "ixeris": {
+    "n": 26,
+    "acc": 0.8461538461538461,
+    "confused_with": {
+     "oxalis": 1,
+     "other_plant": 1
+    }
+   },
+   "lactuca_indica": {
+    "n": 34,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "chenopodium": {
+    "n": 32,
+    "acc": 0.96875,
+    "confused_with": {
+     "pinellia": 1
+    }
+   },
+   "portulaca": {
+    "n": 28,
+    "acc": 0.9642857142857143,
+    "confused_with": {
+     "euphorbia": 1
+    }
+   },
+   "rumex": {
+    "n": 23,
+    "acc": 0.9130434782608695,
+    "confused_with": {
+     "phytolacca": 1,
+     "taraxacum": 1
+    }
+   },
+   "capsella": {
+    "n": 32,
+    "acc": 0.9375,
+    "confused_with": {
+     "lactuca_indica": 1,
+     "allium_monanthum": 1
+    }
+   },
+   "stellaria": {
+    "n": 32,
+    "acc": 0.875,
+    "confused_with": {
+     "sedum": 1,
+     "clematis": 1
+    }
+   },
+   "oxalis": {
+    "n": 28,
+    "acc": 0.8571428571428571,
+    "confused_with": {
+     "thalictrum": 1,
+     "pinellia": 1
+    }
+   },
+   "oenanthe": {
+    "n": 21,
+    "acc": 0.8095238095238095,
+    "confused_with": {
+     "cicuta": 1,
+     "chelidonium": 1
+    }
+   },
+   "anthriscus": {
+    "n": 43,
+    "acc": 0.8837209302325582,
+    "confused_with": {
+     "conium": 3,
+     "cicuta": 2
+    }
+   },
+   "heracleum": {
+    "n": 11,
+    "acc": 0.7272727272727273,
+    "confused_with": {
+     "other_plant": 1,
+     "aralia_elata": 1
+    }
+   },
+   "angelica_gigas": {
+    "n": 6,
+    "acc": 0.8333333333333334,
+    "confused_with": {
+     "arisaema": 1
+    }
+   },
+   "veratrum": {
+    "n": 28,
+    "acc": 0.9642857142857143,
+    "confused_with": {
+     "kalopanax": 1
+    }
+   },
+   "caltha": {
+    "n": 26,
+    "acc": 0.8076923076923077,
+    "confused_with": {
+     "symplocarpus": 1,
+     "other_plant": 1
+    }
+   },
+   "convallaria": {
+    "n": 33,
+    "acc": 0.8484848484848485,
+    "confused_with": {
+     "allium_victorialis": 3,
+     "allium_thunbergii": 1
+    }
+   },
+   "phytolacca": {
+    "n": 25,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "cicuta": {
+    "n": 18,
+    "acc": 0.8888888888888888,
+    "confused_with": {
+     "smilax_china": 1,
+     "artemisia": 1
+    }
+   },
+   "conium": {
+    "n": 30,
+    "acc": 0.8666666666666667,
+    "confused_with": {
+     "anthriscus": 4
+    }
+   },
+   "angelica_toxic": {
+    "n": 7,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "aconitum": {
+    "n": 25,
+    "acc": 0.96,
+    "confused_with": {
+     "heracleum": 1
+    }
+   },
+   "arisaema": {
+    "n": 24,
+    "acc": 0.9583333333333334,
+    "confused_with": {
+     "pinellia": 1
+    }
+   },
+   "pinellia": {
+    "n": 32,
+    "acc": 0.9375,
+    "confused_with": {
+     "ganoderma": 1,
+     "schisandra": 1
+    }
+   },
+   "paris": {
+    "n": 35,
+    "acc": 0.8857142857142857,
+    "confused_with": {
+     "lilium": 1,
+     "eleutherococcus": 1
+    }
+   },
+   "farfugium": {
+    "n": 25,
+    "acc": 0.92,
+    "confused_with": {
+     "arisaema": 1,
+     "dioscorea_other": 1
+    }
+   },
+   "corydalis": {
+    "n": 32,
+    "acc": 0.84375,
+    "confused_with": {
+     "thalictrum": 2,
+     "other_plant": 1
+    }
+   },
+   "amana": {
+    "n": 27,
+    "acc": 0.9629629629629629,
+    "confused_with": {
+     "pinellia": 1
+    }
+   },
+   "thalictrum": {
+    "n": 27,
+    "acc": 0.8518518518518519,
+    "confused_with": {
+     "syneilesis": 1,
+     "pulsatilla": 1
+    }
+   },
+   "scopolia": {
+    "n": 19,
+    "acc": 0.8947368421052632,
+    "confused_with": {
+     "phytolacca": 1,
+     "eleutherococcus": 1
+    }
+   },
+   "datura": {
+    "n": 25,
+    "acc": 0.88,
+    "confused_with": {
+     "solanum_nigrum": 2,
+     "rumex": 1
+    }
+   },
+   "pulsatilla": {
+    "n": 18,
+    "acc": 0.9444444444444444,
+    "confused_with": {
+     "aconitum": 1
+    }
+   },
+   "chelidonium": {
+    "n": 34,
+    "acc": 0.9705882352941176,
+    "confused_with": {
+     "corydalis": 1
+    }
+   },
+   "ranunculus": {
+    "n": 35,
+    "acc": 0.8857142857142857,
+    "confused_with": {
+     "caltha": 1,
+     "cicuta": 1
+    }
+   },
+   "clematis": {
+    "n": 25,
+    "acc": 0.88,
+    "confused_with": {
+     "ranunculus": 1,
+     "paris": 1
+    }
+   },
+   "aristolochia": {
+    "n": 21,
+    "acc": 0.9047619047619048,
+    "confused_with": {
+     "dioscorea_edible": 2
+    }
+   },
+   "euphorbia": {
+    "n": 23,
+    "acc": 0.8260869565217391,
+    "confused_with": {
+     "other_plant": 2,
+     "chenopodium": 1
+    }
+   },
+   "symplocarpus": {
+    "n": 24,
+    "acc": 0.9583333333333334,
+    "confused_with": {
+     "pinellia": 1
+    }
+   },
+   "dictamnus": {
+    "n": 29,
+    "acc": 0.896551724137931,
+    "confused_with": {
+     "aconitum": 1,
+     "osmunda": 1
+    }
+   },
+   "solanum_nigrum": {
+    "n": 39,
+    "acc": 0.9743589743589743,
+    "confused_with": {
+     "stellaria": 1
+    }
+   },
+   "adonis": {
+    "n": 32,
+    "acc": 0.96875,
+    "confused_with": {
+     "aconitum": 1
+    }
+   },
+   "lycoris": {
+    "n": 31,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "amanita": {
+    "n": 16,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "trichoderma": {
+    "n": 20,
+    "acc": 0.95,
+    "confused_with": {
+     "omphalotus": 1
+    }
+   },
+   "omphalotus": {
+    "n": 17,
+    "acc": 0.5882352941176471,
+    "confused_with": {
+     "pleurotus": 5,
+     "gymnopilus": 2
+    }
+   },
+   "hypholoma_fasciculare": {
+    "n": 21,
+    "acc": 0.8571428571428571,
+    "confused_with": {
+     "hypholoma_lateritium": 2,
+     "armillaria": 1
+    }
+   },
+   "entoloma": {
+    "n": 27,
+    "acc": 0.6666666666666666,
+    "confused_with": {
+     "amanita": 3,
+     "pleurotus": 2
+    }
+   },
+   "gymnopilus": {
+    "n": 22,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "tricholoma_matsutake": {
+    "n": 34,
+    "acc": 0.9411764705882353,
+    "confused_with": {
+     "gymnopilus": 1,
+     "other_fungi": 1
+    }
+   },
+   "sarcodon": {
+    "n": 18,
+    "acc": 0.8888888888888888,
+    "confused_with": {
+     "tricholoma_matsutake": 2
+    }
+   },
+   "lentinula": {
+    "n": 26,
+    "acc": 0.8461538461538461,
+    "confused_with": {
+     "omphalotus": 4
+    }
+   },
+   "pleurotus": {
+    "n": 24,
+    "acc": 0.9166666666666666,
+    "confused_with": {
+     "gymnopilus": 2
+    }
+   },
+   "ramaria": {
+    "n": 33,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "ganoderma": {
+    "n": 23,
+    "acc": 0.9565217391304348,
+    "confused_with": {
+     "lentinula": 1
+    }
+   },
+   "cantharellus": {
+    "n": 9,
+    "acc": 0.6666666666666666,
+    "confused_with": {
+     "entoloma": 3
+    }
+   },
+   "hericium": {
+    "n": 31,
+    "acc": 0.9354838709677419,
+    "confused_with": {
+     "other_fungi": 1,
+     "amanita": 1
+    }
+   },
+   "auricularia": {
+    "n": 28,
+    "acc": 0.9285714285714286,
+    "confused_with": {
+     "other_plant": 1,
+     "other_fungi": 1
+    }
+   },
+   "armillaria": {
+    "n": 32,
+    "acc": 0.90625,
+    "confused_with": {
+     "pleurotus": 2,
+     "cantharellus": 1
+    }
+   },
+   "hypholoma_lateritium": {
+    "n": 34,
+    "acc": 0.7058823529411765,
+    "confused_with": {
+     "hypholoma_fasciculare": 4,
+     "armillaria": 3
+    }
+   },
+   "other_plant": {
+    "n": 60,
+    "acc": 0.26666666666666666,
+    "confused_with": {
+     "kalopanax": 3,
+     "vitis": 2
+    }
+   },
+   "other_fungi": {
+    "n": 73,
+    "acc": 0.6986301369863014,
+    "confused_with": {
+     "auricularia": 5,
+     "ganoderma": 3
+    }
+   }
+  },
+  "toxic_shown_as_edible": 0.004744958481613286,
+  "toxic_shown_as_edible_n": 4,
+  "toxic_images": 843,
+  "edible_coverage": 0.7050177394830208,
+  "toxic_warning_recall": 0.99644128113879,
+  "edible_false_warning": 0.16168271667511405,
+  "pairs": [
+   {
+    "edible": "ligularia",
+    "lookalike": "caltha",
+    "n_edible": 18,
+    "n_lookalike": 26,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_victorialis",
+    "lookalike": "veratrum",
+    "n_edible": 25,
+    "n_lookalike": 28,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_victorialis",
+    "lookalike": "convallaria",
+    "n_edible": 25,
+    "n_lookalike": 33,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 3,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_victorialis",
+    "lookalike": "lycoris",
+    "n_edible": 25,
+    "n_lookalike": 31,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "hemerocallis",
+    "lookalike": "veratrum",
+    "n_edible": 27,
+    "n_lookalike": 28,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "hosta",
+    "lookalike": "veratrum",
+    "n_edible": 35,
+    "n_lookalike": 28,
+    "edible_called_lookalike": 1,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "polygonatum",
+    "lookalike": "convallaria",
+    "n_edible": 25,
+    "n_lookalike": 33,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "codonopsis",
+    "lookalike": "phytolacca",
+    "n_edible": 26,
+    "n_lookalike": 25,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "platycodon",
+    "lookalike": "phytolacca",
+    "n_edible": 24,
+    "n_lookalike": 25,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "aralia_elata",
+    "lookalike": "rhus_chinensis",
+    "n_edible": 33,
+    "n_lookalike": 18,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "aralia_elata",
+    "lookalike": "toxicodendron",
+    "n_edible": 33,
+    "n_lookalike": 24,
+    "edible_called_lookalike": 1,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "kalopanax",
+    "lookalike": "toxicodendron",
+    "n_edible": 36,
+    "n_lookalike": 24,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "oenanthe",
+    "lookalike": "cicuta",
+    "n_edible": 21,
+    "n_lookalike": 18,
+    "edible_called_lookalike": 1,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "heracleum",
+    "lookalike": "cicuta",
+    "n_edible": 11,
+    "n_lookalike": 18,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "anthriscus",
+    "lookalike": "conium",
+    "n_edible": 43,
+    "n_lookalike": 30,
+    "edible_called_lookalike": 3,
+    "lookalike_called_edible": 4,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "angelica_gigas",
+    "lookalike": "angelica_toxic",
+    "n_edible": 6,
+    "n_lookalike": 7,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_monanthum",
+    "lookalike": "amana",
+    "n_edible": 38,
+    "n_lookalike": 27,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "syneilesis",
+    "lookalike": "paris",
+    "n_edible": 34,
+    "n_lookalike": 35,
+    "edible_called_lookalike": 1,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "petasites",
+    "lookalike": "farfugium",
+    "n_edible": 36,
+    "n_lookalike": 25,
+    "edible_called_lookalike": 1,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "artemisia",
+    "lookalike": "corydalis",
+    "n_edible": 33,
+    "n_lookalike": 32,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "rhododendron_mucronulatum",
+    "lookalike": "rhododendron_toxic",
+    "n_edible": 30,
+    "n_lookalike": 23,
+    "edible_called_lookalike": 4,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 1
+   },
+   {
+    "edible": "vitis",
+    "lookalike": "ampelopsis",
+    "n_edible": 28,
+    "n_lookalike": 32,
+    "edible_called_lookalike": 5,
+    "lookalike_called_edible": 7,
+    "lookalike_called_edible_confident": 1
+   },
+   {
+    "edible": "dioscorea_edible",
+    "lookalike": "dioscorea_other",
+    "n_edible": 25,
+    "n_lookalike": 25,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "pleurotus",
+    "lookalike": "omphalotus",
+    "n_edible": 24,
+    "n_lookalike": 17,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 5,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "lentinula",
+    "lookalike": "omphalotus",
+    "n_edible": 26,
+    "n_lookalike": 17,
+    "edible_called_lookalike": 4,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "hypholoma_lateritium",
+    "lookalike": "hypholoma_fasciculare",
+    "n_edible": 34,
+    "n_lookalike": 21,
+    "edible_called_lookalike": 4,
+    "lookalike_called_edible": 2,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "ganoderma",
+    "lookalike": "trichoderma",
+    "n_edible": 23,
+    "n_lookalike": 20,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   }
+  ]
+ },
+ "test": {
+  "n": 3318,
+  "top1": 0.8477998794454491,
+  "top3": 0.9430379746835443,
+  "per_class": {
+   "quercus": {
+    "n": 28,
+    "acc": 0.7142857142857143,
+    "confused_with": {
+     "castanea": 3,
+     "pinus_densiflora": 1
+    }
+   },
+   "castanea": {
+    "n": 25,
+    "acc": 0.8,
+    "confused_with": {
+     "juglans": 2,
+     "trichoderma": 1
+    }
+   },
+   "pinus_koraiensis": {
+    "n": 24,
+    "acc": 0.875,
+    "confused_with": {
+     "pinus_densiflora": 1,
+     "sasa": 1
+    }
+   },
+   "pinus_densiflora": {
+    "n": 28,
+    "acc": 0.8571428571428571,
+    "confused_with": {
+     "pinus_koraiensis": 3,
+     "robinia": 1
+    }
+   },
+   "corylus": {
+    "n": 26,
+    "acc": 0.8461538461538461,
+    "confused_with": {
+     "dioscorea_other": 1,
+     "clematis": 1
+    }
+   },
+   "juglans": {
+    "n": 25,
+    "acc": 0.68,
+    "confused_with": {
+     "rhus_chinensis": 3,
+     "quercus": 1
+    }
+   },
+   "actinidia": {
+    "n": 29,
+    "acc": 0.6896551724137931,
+    "confused_with": {
+     "diospyros_lotus": 2,
+     "juglans": 2
+    }
+   },
+   "vitis": {
+    "n": 31,
+    "acc": 0.6774193548387096,
+    "confused_with": {
+     "ampelopsis": 3,
+     "morus": 2
+    }
+   },
+   "ampelopsis": {
+    "n": 32,
+    "acc": 0.75,
+    "confused_with": {
+     "vitis": 7,
+     "rubus": 1
+    }
+   },
+   "akebia": {
+    "n": 37,
+    "acc": 0.7837837837837838,
+    "confused_with": {
+     "oxalis": 3,
+     "ganoderma": 1
+    }
+   },
+   "rubus": {
+    "n": 31,
+    "acc": 0.6774193548387096,
+    "confused_with": {
+     "morus": 3,
+     "entoloma": 1
+    }
+   },
+   "morus": {
+    "n": 16,
+    "acc": 0.875,
+    "confused_with": {
+     "crataegus": 1,
+     "ampelopsis": 1
+    }
+   },
+   "elaeagnus": {
+    "n": 42,
+    "acc": 0.7857142857142857,
+    "confused_with": {
+     "other_plant": 2,
+     "aristolochia": 1
+    }
+   },
+   "crataegus": {
+    "n": 23,
+    "acc": 0.6521739130434783,
+    "confused_with": {
+     "betula": 2,
+     "morus": 1
+    }
+   },
+   "pyrus": {
+    "n": 32,
+    "acc": 0.9375,
+    "confused_with": {
+     "elaeagnus": 1,
+     "juglans": 1
+    }
+   },
+   "diospyros_lotus": {
+    "n": 29,
+    "acc": 0.7241379310344828,
+    "confused_with": {
+     "euphorbia": 1,
+     "other_plant": 1
+    }
+   },
+   "sorbus_commixta": {
+    "n": 22,
+    "acc": 0.7272727272727273,
+    "confused_with": {
+     "juglans": 4,
+     "lycoris": 1
+    }
+   },
+   "schisandra": {
+    "n": 21,
+    "acc": 0.8095238095238095,
+    "confused_with": {
+     "elaeagnus": 2,
+     "smilax_china": 1
+    }
+   },
+   "zanthoxylum": {
+    "n": 30,
+    "acc": 0.6666666666666666,
+    "confused_with": {
+     "rubus": 2,
+     "toxicodendron": 1
+    }
+   },
+   "rosa_multiflora": {
+    "n": 26,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "cornus_kousa": {
+    "n": 23,
+    "acc": 0.782608695652174,
+    "confused_with": {
+     "crataegus": 2,
+     "eleutherococcus": 1
+    }
+   },
+   "vaccinium": {
+    "n": 21,
+    "acc": 0.7619047619047619,
+    "confused_with": {
+     "euonymus_alatus": 2,
+     "diospyros_lotus": 2
+    }
+   },
+   "pueraria": {
+    "n": 30,
+    "acc": 0.9333333333333333,
+    "confused_with": {
+     "atractylodes": 1,
+     "vitis": 1
+    }
+   },
+   "sasa": {
+    "n": 21,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "betula": {
+    "n": 38,
+    "acc": 0.7368421052631579,
+    "confused_with": {
+     "crataegus": 2,
+     "auricularia": 1
+    }
+   },
+   "acer_pictum": {
+    "n": 31,
+    "acc": 0.8064516129032258,
+    "confused_with": {
+     "kalopanax": 3,
+     "other_plant": 1
+    }
+   },
+   "lindera": {
+    "n": 34,
+    "acc": 0.8529411764705882,
+    "confused_with": {
+     "corylus": 2,
+     "dioscorea_other": 1
+    }
+   },
+   "euonymus_alatus": {
+    "n": 29,
+    "acc": 0.9310344827586207,
+    "confused_with": {
+     "cornus_kousa": 1,
+     "rosa_multiflora": 1
+    }
+   },
+   "robinia": {
+    "n": 30,
+    "acc": 0.9666666666666667,
+    "confused_with": {
+     "juglans": 1
+    }
+   },
+   "rhododendron_mucronulatum": {
+    "n": 27,
+    "acc": 0.8888888888888888,
+    "confused_with": {
+     "rhododendron_toxic": 2,
+     "portulaca": 1
+    }
+   },
+   "rhododendron_toxic": {
+    "n": 37,
+    "acc": 0.7837837837837838,
+    "confused_with": {
+     "rhododendron_mucronulatum": 6,
+     "other_plant": 2
+    }
+   },
+   "kalopanax": {
+    "n": 28,
+    "acc": 0.7857142857142857,
+    "confused_with": {
+     "acer_pictum": 2,
+     "clematis": 1
+    }
+   },
+   "aralia_elata": {
+    "n": 21,
+    "acc": 0.7142857142857143,
+    "confused_with": {
+     "rhus_chinensis": 2,
+     "amana": 1
+    }
+   },
+   "aralia_cordata": {
+    "n": 32,
+    "acc": 0.8125,
+    "confused_with": {
+     "aralia_elata": 2,
+     "arisaema": 1
+    }
+   },
+   "eleutherococcus": {
+    "n": 22,
+    "acc": 0.8181818181818182,
+    "confused_with": {
+     "codonopsis": 1,
+     "solanum_nigrum": 1
+    }
+   },
+   "smilax_china": {
+    "n": 27,
+    "acc": 0.9629629629629629,
+    "confused_with": {
+     "plantago": 1
+    }
+   },
+   "taxus": {
+    "n": 33,
+    "acc": 0.8787878787878788,
+    "confused_with": {
+     "pinus_koraiensis": 2,
+     "pinus_densiflora": 2
+    }
+   },
+   "toxicodendron": {
+    "n": 26,
+    "acc": 0.8076923076923077,
+    "confused_with": {
+     "aralia_elata": 2,
+     "eleutherococcus": 1
+    }
+   },
+   "rhus_chinensis": {
+    "n": 21,
+    "acc": 0.6666666666666666,
+    "confused_with": {
+     "toxicodendron": 5,
+     "veratrum": 1
+    }
+   },
+   "dioscorea_edible": {
+    "n": 31,
+    "acc": 0.6129032258064516,
+    "confused_with": {
+     "aristolochia": 3,
+     "dioscorea_other": 2
+    }
+   },
+   "dioscorea_other": {
+    "n": 19,
+    "acc": 0.9473684210526315,
+    "confused_with": {
+     "dioscorea_edible": 1
+    }
+   },
+   "codonopsis": {
+    "n": 27,
+    "acc": 0.9259259259259259,
+    "confused_with": {
+     "aralia_cordata": 1,
+     "actinidia": 1
+    }
+   },
+   "platycodon": {
+    "n": 25,
+    "acc": 0.96,
+    "confused_with": {
+     "rhus_chinensis": 1
+    }
+   },
+   "adenophora": {
+    "n": 32,
+    "acc": 0.8125,
+    "confused_with": {
+     "aster_scaber": 2,
+     "platycodon": 2
+    }
+   },
+   "polygonatum": {
+    "n": 31,
+    "acc": 0.9032258064516129,
+    "confused_with": {
+     "hosta": 1,
+     "pinellia": 1
+    }
+   },
+   "lilium": {
+    "n": 25,
+    "acc": 0.72,
+    "confused_with": {
+     "paris": 1,
+     "aristolochia": 1
+    }
+   },
+   "erythronium": {
+    "n": 36,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "allium_victorialis": {
+    "n": 29,
+    "acc": 0.8275862068965517,
+    "confused_with": {
+     "convallaria": 2,
+     "veratrum": 1
+    }
+   },
+   "allium_monanthum": {
+    "n": 19,
+    "acc": 0.7368421052631579,
+    "confused_with": {
+     "allium_thunbergii": 3,
+     "pinellia": 1
+    }
+   },
+   "allium_thunbergii": {
+    "n": 32,
+    "acc": 0.75,
+    "confused_with": {
+     "allium_monanthum": 3,
+     "other_plant": 1
+    }
+   },
+   "atractylodes": {
+    "n": 26,
+    "acc": 0.8461538461538461,
+    "confused_with": {
+     "syneilesis": 1,
+     "paris": 1
+    }
+   },
+   "cirsium": {
+    "n": 19,
+    "acc": 0.7894736842105263,
+    "confused_with": {
+     "lactuca_indica": 2,
+     "solidago": 1
+    }
+   },
+   "calystegia": {
+    "n": 30,
+    "acc": 0.9666666666666667,
+    "confused_with": {
+     "aster_scaber": 1
+    }
+   },
+   "artemisia": {
+    "n": 31,
+    "acc": 0.7419354838709677,
+    "confused_with": {
+     "cicuta": 1,
+     "other_plant": 1
+    }
+   },
+   "plantago": {
+    "n": 15,
+    "acc": 0.7333333333333333,
+    "confused_with": {
+     "ranunculus": 1,
+     "other_plant": 1
+    }
+   },
+   "taraxacum": {
+    "n": 31,
+    "acc": 0.8709677419354839,
+    "confused_with": {
+     "ixeris": 2,
+     "rumex": 1
+    }
+   },
+   "pteridium": {
+    "n": 25,
+    "acc": 0.92,
+    "confused_with": {
+     "osmunda": 1,
+     "oenanthe": 1
+    }
+   },
+   "osmunda": {
+    "n": 37,
+    "acc": 0.918918918918919,
+    "confused_with": {
+     "aralia_elata": 1,
+     "aralia_cordata": 1
+    }
+   },
+   "matteuccia": {
+    "n": 18,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "aster_scaber": {
+    "n": 30,
+    "acc": 0.9333333333333333,
+    "confused_with": {
+     "solidago": 1,
+     "rhododendron_mucronulatum": 1
+    }
+   },
+   "ligularia": {
+    "n": 23,
+    "acc": 0.8695652173913043,
+    "confused_with": {
+     "petasites": 3
+    }
+   },
+   "solidago": {
+    "n": 22,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "pimpinella": {
+    "n": 2,
+    "acc": 0.5,
+    "confused_with": {
+     "oenanthe": 1
+    }
+   },
+   "hemerocallis": {
+    "n": 28,
+    "acc": 0.8214285714285714,
+    "confused_with": {
+     "lycoris": 4,
+     "lilium": 1
+    }
+   },
+   "petasites": {
+    "n": 22,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "syneilesis": {
+    "n": 31,
+    "acc": 0.967741935483871,
+    "confused_with": {
+     "arisaema": 1
+    }
+   },
+   "sedum": {
+    "n": 15,
+    "acc": 0.9333333333333333,
+    "confused_with": {
+     "solidago": 1
+    }
+   },
+   "hosta": {
+    "n": 27,
+    "acc": 0.8518518518518519,
+    "confused_with": {
+     "adenophora": 3,
+     "thalictrum": 1
+    }
+   },
+   "ixeris": {
+    "n": 31,
+    "acc": 0.9354838709677419,
+    "confused_with": {
+     "adenophora": 1,
+     "atractylodes": 1
+    }
+   },
+   "lactuca_indica": {
+    "n": 21,
+    "acc": 0.9047619047619048,
+    "confused_with": {
+     "ixeris": 1,
+     "taraxacum": 1
+    }
+   },
+   "chenopodium": {
+    "n": 22,
+    "acc": 0.9090909090909091,
+    "confused_with": {
+     "ixeris": 1,
+     "dioscorea_edible": 1
+    }
+   },
+   "portulaca": {
+    "n": 22,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "rumex": {
+    "n": 15,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "capsella": {
+    "n": 20,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "stellaria": {
+    "n": 32,
+    "acc": 0.78125,
+    "confused_with": {
+     "other_plant": 2,
+     "chelidonium": 1
+    }
+   },
+   "oxalis": {
+    "n": 28,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "oenanthe": {
+    "n": 29,
+    "acc": 0.8620689655172413,
+    "confused_with": {
+     "cicuta": 2,
+     "ranunculus": 2
+    }
+   },
+   "anthriscus": {
+    "n": 23,
+    "acc": 0.8260869565217391,
+    "confused_with": {
+     "conium": 3,
+     "angelica_toxic": 1
+    }
+   },
+   "heracleum": {
+    "n": 22,
+    "acc": 0.8181818181818182,
+    "confused_with": {
+     "clematis": 1,
+     "artemisia": 1
+    }
+   },
+   "angelica_gigas": {
+    "n": 2,
+    "acc": 0.5,
+    "confused_with": {
+     "conium": 1
+    }
+   },
+   "veratrum": {
+    "n": 27,
+    "acc": 0.9259259259259259,
+    "confused_with": {
+     "hosta": 1,
+     "allium_monanthum": 1
+    }
+   },
+   "caltha": {
+    "n": 26,
+    "acc": 0.9615384615384616,
+    "confused_with": {
+     "ligularia": 1
+    }
+   },
+   "convallaria": {
+    "n": 29,
+    "acc": 0.8275862068965517,
+    "confused_with": {
+     "pinellia": 1,
+     "paris": 1
+    }
+   },
+   "phytolacca": {
+    "n": 24,
+    "acc": 0.9583333333333334,
+    "confused_with": {
+     "plantago": 1
+    }
+   },
+   "cicuta": {
+    "n": 30,
+    "acc": 0.9666666666666667,
+    "confused_with": {
+     "oenanthe": 1
+    }
+   },
+   "conium": {
+    "n": 27,
+    "acc": 0.7777777777777778,
+    "confused_with": {
+     "anthriscus": 4,
+     "other_plant": 1
+    }
+   },
+   "angelica_toxic": {
+    "n": 3,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "aconitum": {
+    "n": 38,
+    "acc": 0.7894736842105263,
+    "confused_with": {
+     "corydalis": 4,
+     "clematis": 3
+    }
+   },
+   "arisaema": {
+    "n": 24,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "pinellia": {
+    "n": 29,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "paris": {
+    "n": 24,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "farfugium": {
+    "n": 28,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "corydalis": {
+    "n": 26,
+    "acc": 0.8461538461538461,
+    "confused_with": {
+     "other_plant": 2,
+     "adonis": 1
+    }
+   },
+   "amana": {
+    "n": 20,
+    "acc": 0.9,
+    "confused_with": {
+     "erythronium": 1,
+     "allium_thunbergii": 1
+    }
+   },
+   "thalictrum": {
+    "n": 27,
+    "acc": 0.8148148148148148,
+    "confused_with": {
+     "corydalis": 1,
+     "other_plant": 1
+    }
+   },
+   "scopolia": {
+    "n": 16,
+    "acc": 0.8125,
+    "confused_with": {
+     "codonopsis": 3
+    }
+   },
+   "datura": {
+    "n": 30,
+    "acc": 0.8666666666666667,
+    "confused_with": {
+     "phytolacca": 1,
+     "lilium": 1
+    }
+   },
+   "pulsatilla": {
+    "n": 35,
+    "acc": 0.9428571428571428,
+    "confused_with": {
+     "aconitum": 1,
+     "adenophora": 1
+    }
+   },
+   "chelidonium": {
+    "n": 24,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "ranunculus": {
+    "n": 26,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "clematis": {
+    "n": 20,
+    "acc": 0.65,
+    "confused_with": {
+     "pinus_koraiensis": 2,
+     "aristolochia": 1
+    }
+   },
+   "aristolochia": {
+    "n": 23,
+    "acc": 0.782608695652174,
+    "confused_with": {
+     "actinidia": 2,
+     "polygonatum": 1
+    }
+   },
+   "euphorbia": {
+    "n": 18,
+    "acc": 0.9444444444444444,
+    "confused_with": {
+     "paris": 1
+    }
+   },
+   "symplocarpus": {
+    "n": 35,
+    "acc": 0.9428571428571428,
+    "confused_with": {
+     "hosta": 1,
+     "arisaema": 1
+    }
+   },
+   "dictamnus": {
+    "n": 23,
+    "acc": 0.782608695652174,
+    "confused_with": {
+     "other_plant": 1,
+     "ligularia": 1
+    }
+   },
+   "solanum_nigrum": {
+    "n": 26,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "adonis": {
+    "n": 21,
+    "acc": 0.9523809523809523,
+    "confused_with": {
+     "anthriscus": 1
+    }
+   },
+   "lycoris": {
+    "n": 30,
+    "acc": 0.8333333333333334,
+    "confused_with": {
+     "allium_monanthum": 2,
+     "other_plant": 1
+    }
+   },
+   "amanita": {
+    "n": 23,
+    "acc": 0.8695652173913043,
+    "confused_with": {
+     "pleurotus": 1,
+     "other_fungi": 1
+    }
+   },
+   "trichoderma": {
+    "n": 25,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "omphalotus": {
+    "n": 21,
+    "acc": 0.7619047619047619,
+    "confused_with": {
+     "lentinula": 2,
+     "cantharellus": 1
+    }
+   },
+   "hypholoma_fasciculare": {
+    "n": 23,
+    "acc": 0.6956521739130435,
+    "confused_with": {
+     "hypholoma_lateritium": 2,
+     "other_fungi": 1
+    }
+   },
+   "entoloma": {
+    "n": 32,
+    "acc": 0.90625,
+    "confused_with": {
+     "pleurotus": 2,
+     "trichoderma": 1
+    }
+   },
+   "gymnopilus": {
+    "n": 23,
+    "acc": 0.9130434782608695,
+    "confused_with": {
+     "pleurotus": 1,
+     "armillaria": 1
+    }
+   },
+   "tricholoma_matsutake": {
+    "n": 31,
+    "acc": 0.967741935483871,
+    "confused_with": {
+     "hypholoma_lateritium": 1
+    }
+   },
+   "sarcodon": {
+    "n": 13,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "lentinula": {
+    "n": 20,
+    "acc": 0.95,
+    "confused_with": {
+     "pleurotus": 1
+    }
+   },
+   "pleurotus": {
+    "n": 17,
+    "acc": 0.8823529411764706,
+    "confused_with": {
+     "entoloma": 1,
+     "hypholoma_fasciculare": 1
+    }
+   },
+   "ramaria": {
+    "n": 28,
+    "acc": 0.8928571428571429,
+    "confused_with": {
+     "ganoderma": 1,
+     "tricholoma_matsutake": 1
+    }
+   },
+   "ganoderma": {
+    "n": 31,
+    "acc": 0.967741935483871,
+    "confused_with": {
+     "auricularia": 1
+    }
+   },
+   "cantharellus": {
+    "n": 7,
+    "acc": 1.0,
+    "confused_with": {}
+   },
+   "hericium": {
+    "n": 30,
+    "acc": 0.8666666666666667,
+    "confused_with": {
+     "pleurotus": 1,
+     "lentinula": 1
+    }
+   },
+   "auricularia": {
+    "n": 30,
+    "acc": 0.8,
+    "confused_with": {
+     "other_fungi": 3,
+     "ganoderma": 1
+    }
+   },
+   "armillaria": {
+    "n": 17,
+    "acc": 0.8235294117647058,
+    "confused_with": {
+     "hypholoma_fasciculare": 2,
+     "rosa_multiflora": 1
+    }
+   },
+   "hypholoma_lateritium": {
+    "n": 20,
+    "acc": 0.85,
+    "confused_with": {
+     "hypholoma_fasciculare": 2,
+     "omphalotus": 1
+    }
+   },
+   "other_plant": {
+    "n": 63,
+    "acc": 0.4126984126984127,
+    "confused_with": {
+     "euonymus_alatus": 3,
+     "quercus": 3
+    }
+   },
+   "other_fungi": {
+    "n": 62,
+    "acc": 0.6935483870967742,
+    "confused_with": {
+     "ganoderma": 3,
+     "amanita": 3
+    }
+   }
+  },
+  "toxic_shown_as_edible": 0.010895883777239709,
+  "toxic_shown_as_edible_n": 9,
+  "toxic_images": 826,
+  "edible_coverage": 0.704841228526809,
+  "toxic_warning_recall": 0.9939467312348669,
+  "edible_false_warning": 0.17022384174908903,
+  "pairs": [
+   {
+    "edible": "ligularia",
+    "lookalike": "caltha",
+    "n_edible": 23,
+    "n_lookalike": 26,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_victorialis",
+    "lookalike": "veratrum",
+    "n_edible": 29,
+    "n_lookalike": 27,
+    "edible_called_lookalike": 1,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_victorialis",
+    "lookalike": "convallaria",
+    "n_edible": 29,
+    "n_lookalike": 29,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_victorialis",
+    "lookalike": "lycoris",
+    "n_edible": 29,
+    "n_lookalike": 30,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "hemerocallis",
+    "lookalike": "veratrum",
+    "n_edible": 28,
+    "n_lookalike": 27,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "hosta",
+    "lookalike": "veratrum",
+    "n_edible": 27,
+    "n_lookalike": 27,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "polygonatum",
+    "lookalike": "convallaria",
+    "n_edible": 31,
+    "n_lookalike": 29,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "codonopsis",
+    "lookalike": "phytolacca",
+    "n_edible": 27,
+    "n_lookalike": 24,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "platycodon",
+    "lookalike": "phytolacca",
+    "n_edible": 25,
+    "n_lookalike": 24,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "aralia_elata",
+    "lookalike": "rhus_chinensis",
+    "n_edible": 21,
+    "n_lookalike": 21,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "aralia_elata",
+    "lookalike": "toxicodendron",
+    "n_edible": 21,
+    "n_lookalike": 26,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 2,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "kalopanax",
+    "lookalike": "toxicodendron",
+    "n_edible": 28,
+    "n_lookalike": 26,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "oenanthe",
+    "lookalike": "cicuta",
+    "n_edible": 29,
+    "n_lookalike": 30,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "heracleum",
+    "lookalike": "cicuta",
+    "n_edible": 22,
+    "n_lookalike": 30,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "anthriscus",
+    "lookalike": "conium",
+    "n_edible": 23,
+    "n_lookalike": 27,
+    "edible_called_lookalike": 3,
+    "lookalike_called_edible": 4,
+    "lookalike_called_edible_confident": 2
+   },
+   {
+    "edible": "angelica_gigas",
+    "lookalike": "angelica_toxic",
+    "n_edible": 2,
+    "n_lookalike": 3,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "allium_monanthum",
+    "lookalike": "amana",
+    "n_edible": 19,
+    "n_lookalike": 20,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "syneilesis",
+    "lookalike": "paris",
+    "n_edible": 31,
+    "n_lookalike": 24,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "petasites",
+    "lookalike": "farfugium",
+    "n_edible": 22,
+    "n_lookalike": 28,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "artemisia",
+    "lookalike": "corydalis",
+    "n_edible": 31,
+    "n_lookalike": 26,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "rhododendron_mucronulatum",
+    "lookalike": "rhododendron_toxic",
+    "n_edible": 27,
+    "n_lookalike": 37,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 6,
+    "lookalike_called_edible_confident": 3
+   },
+   {
+    "edible": "vitis",
+    "lookalike": "ampelopsis",
+    "n_edible": 31,
+    "n_lookalike": 32,
+    "edible_called_lookalike": 3,
+    "lookalike_called_edible": 7,
+    "lookalike_called_edible_confident": 2
+   },
+   {
+    "edible": "dioscorea_edible",
+    "lookalike": "dioscorea_other",
+    "n_edible": 31,
+    "n_lookalike": 19,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "pleurotus",
+    "lookalike": "omphalotus",
+    "n_edible": 17,
+    "n_lookalike": 21,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 1,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "lentinula",
+    "lookalike": "omphalotus",
+    "n_edible": 20,
+    "n_lookalike": 21,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 2,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "hypholoma_lateritium",
+    "lookalike": "hypholoma_fasciculare",
+    "n_edible": 20,
+    "n_lookalike": 23,
+    "edible_called_lookalike": 2,
+    "lookalike_called_edible": 2,
+    "lookalike_called_edible_confident": 0
+   },
+   {
+    "edible": "ganoderma",
+    "lookalike": "trichoderma",
+    "n_edible": 31,
+    "n_lookalike": 25,
+    "edible_called_lookalike": 0,
+    "lookalike_called_edible": 0,
+    "lookalike_called_edible_confident": 0
+   }
+  ]
+ },
+ "sizes": {
+  "train": 31404,
+  "val": 3427,
+  "test": 3318
+ }
+}

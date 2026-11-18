@@ -1,0 +1,256 @@
+===== collect 23:02:55 =====
+[status] collect {"note": "resolving places and taxa"}
+places: {'kr': [[6891, 'South Korea']], 'ea': [[6737, 'Japan'], [6903, 'China']]}
+sasa: ['Sasamorpha borealis/species', 'Sasa quelpaertensis/species', 'Sasa kurilensis/species', 'Sasa senanensis/species', 'Sasa veitchii/species'] missing=[]
+[status] collect {"note": "taxa resolved", "unresolved": {"angelica_toxic": ["Angelica purpuraefolia"], "scopolia": ["Scopolia parviflora"], "omphalotus": ["Omphalotus guepiniiformis"]}, "api_calls": 10}
+[24/127] sasa: 180 photos listed
+  ramaria: 2 photos in Korea/East Asia, 180 including the rest of the world
+  armillaria: 28 photos in Korea/East Asia, 180 including the rest of the world
+[status] collect {"note": "photo lists ready", "listed": {"quercus": 180, "castanea": 180, "pinus_koraiensis": 180, "pinus_densiflora": 180, "corylus": 180, "juglans": 180, "actinidia": 180, "vitis": 180, "ampelopsis": 180, "akebia": 180, "rubus": 180, "morus": 180, "elaeagnus": 180, "crataegus": 180, "pyrus": 180, 
+  downloaded 1000/22447
+  downloaded 2000/22447
+  downloaded 3000/22447
+  downloaded 4000/22447
+  downloaded 5000/22447
+  downloaded 6000/22447
+  downloaded 7000/22447
+  downloaded 8000/22447
+  downloaded 9000/22447
+  downloaded 10000/22447
+  downloaded 11000/22447
+  downloaded 12000/22447
+  downloaded 13000/22447
+  downloaded 14000/22447
+  downloaded 15000/22447
+  downloaded 16000/22447
+  downloaded 17000/22447
+  downloaded 18000/22447
+  downloaded 19000/22447
+  downloaded 20000/22447
+  downloaded 21000/22447
+  downloaded 22000/22447
+[status] collect {"note": "done", "n_classes": 127, "n_images": 22447, "dropped": [], "provisional": ["angelica_gigas", "angelica_toxic", "pimpinella"]}
+===== embed 23:03:56 =====
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+cache has 37115 vectors
+[status] embed {"note": "start", "total": 38149, "todo": 1034}
+  embedded 1024/1034 (5.1 img/s, ~0 min left)
+  embedded 1034/1034 (5.1 img/s, ~0 min left)
+train: 31404 vectors
+val: 3427 vectors
+test: 3318 vectors
+[status] embed {"note": "done", "vectors": 38149, "minutes": 3.5}
+===== train_head 23:07:32 =====
+[status] train {"note": "start", "train": 31404, "val": 3427, "test": 3318, "classes": 127}
+C=0.5 beta=0.0 val_acc=0.8258
+C=0.5 beta=2.0 val_acc=0.8264
+C=0.5 beta=5.0 val_acc=0.8299
+C=0.5 beta=10.0 val_acc=0.8287
+C=0.5 beta=20.0 val_acc=0.8170
+C=1.0 beta=0.0 val_acc=0.8404
+C=1.0 beta=2.0 val_acc=0.8401
+C=1.0 beta=5.0 val_acc=0.8401
+C=1.0 beta=10.0 val_acc=0.8383
+C=1.0 beta=20.0 val_acc=0.8310
+C=2.0 beta=0.0 val_acc=0.8494
+C=2.0 beta=2.0 val_acc=0.8488
+C=2.0 beta=5.0 val_acc=0.8494
+C=2.0 beta=10.0 val_acc=0.8439
+C=2.0 beta=20.0 val_acc=0.8395
+C=4.0 beta=0.0 val_acc=0.8526
+C=4.0 beta=2.0 val_acc=0.8523
+C=4.0 beta=5.0 val_acc=0.8526
+C=4.0 beta=10.0 val_acc=0.8503
+C=4.0 beta=20.0 val_acc=0.8430
+C=8.0 beta=0.0 val_acc=0.8556
+C=8.0 beta=2.0 val_acc=0.8561
+C=8.0 beta=5.0 val_acc=0.8561
+C=8.0 beta=10.0 val_acc=0.8547
+C=8.0 beta=20.0 val_acc=0.8486
+C=16.0 beta=0.0 val_acc=0.8541
+C=16.0 beta=2.0 val_acc=0.8529
+C=16.0 beta=5.0 val_acc=0.8529
+C=16.0 beta=10.0 val_acc=0.8538
+C=16.0 beta=20.0 val_acc=0.8500
+[status] train {"note": "done", "val_acc": 0.8561, "zero_shot_val_acc": 0.6411, "test_top1": 0.8478, "test_top3": 0.943, "t_conf": 0.79, "toxic_shown_as_edible_test": 0.010895883777239709, "edible_coverage_test": 0.704841228526809}
+===== export 23:08:30 =====
+[0;93m2026-11-18 23:08:30.743877415 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+2026-11-18 23:08:33,577 open_clip.factory [INFO] - Parsing model identifier. Schema: hf-hub, Identifier: imageomics/bioclip
+2026-11-18 23:08:33,578 open_clip.factory [INFO] - Attempting to load config from HF Hub: imageomics/bioclip
+2026-11-18 23:08:33,689 httpx2 [INFO] - HTTP Request: HEAD https://huggingface.co/imageomics/bioclip/resolve/main/open_clip_config.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-18 23:08:33,690 huggingface_hub.utils._http [WARNING] - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-18 23:08:33,697 httpx2 [INFO] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/imageomics/bioclip/ce901ab3c6a913f9e9ef94ce6d27761069f4f01c/open_clip_config.json?%2Fimageomics%2Fbioclip%2Fresolve%2Fmain%2Fopen_clip_config.json=&etag=%222bddb0b078de92c5034e7c602272e84a9709e310%22 "HTTP/1.1 200 OK"
+2026-11-18 23:08:33,697 open_clip.factory [INFO] - Loaded model config from HF Hub: imageomics/bioclip
+2026-11-18 23:08:33,731 httpx2 [INFO] - HTTP Request: HEAD https://huggingface.co/imageomics/bioclip/resolve/main/open_clip_model.safetensors "HTTP/1.1 404 Not Found"
+2026-11-18 23:08:33,770 httpx2 [INFO] - HTTP Request: HEAD https://huggingface.co/imageomics/bioclip/resolve/main/open_clip_pytorch_model.bin "HTTP/1.1 302 Found"
+2026-11-18 23:08:33,771 open_clip.factory [INFO] - Found default weights file on HF Hub: /home/runner/.cache/huggingface/hub/models--imageomics--bioclip/snapshots/ce901ab3c6a913f9e9ef94ce6d27761069f4f01c/open_clip_pytorch_model.bin
+2026-11-18 23:08:33,771 open_clip.factory [INFO] - Instantiating model architecture: CLIP
+2026-11-18 23:08:34,459 open_clip.factory [INFO] - Loading full pretrained weights from: /home/runner/.cache/huggingface/hub/models--imageomics--bioclip/snapshots/ce901ab3c6a913f9e9ef94ce6d27761069f4f01c/open_clip_pytorch_model.bin
+2026-11-18 23:08:34,742 open_clip.factory [INFO] - Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': [0.48145466, 0.4578275, 0.40821073], 'std': [0.26862954, 0.26130258, 0.27577711], 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+2026-11-18 23:08:34,742 open_clip.factory [INFO] - Model hf-hub:imageomics/bioclip creation process complete.
+2026-11-18 23:08:34,744 open_clip.factory [INFO] - Parsing tokenizer identifier. Schema: hf-hub, Identifier: imageomics/bioclip
+2026-11-18 23:08:34,744 open_clip.factory [INFO] - Attempting to load config from hf-hub:imageomics/bioclip
+2026-11-18 23:08:34,776 httpx2 [INFO] - HTTP Request: HEAD https://huggingface.co/imageomics/bioclip/resolve/main/open_clip_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-11-18 23:08:34,784 httpx2 [INFO] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/imageomics/bioclip/ce901ab3c6a913f9e9ef94ce6d27761069f4f01c/open_clip_config.json?%2Fimageomics%2Fbioclip%2Fresolve%2Fmain%2Fopen_clip_config.json=&etag=%222bddb0b078de92c5034e7c602272e84a9709e310%22 "HTTP/1.1 200 OK"
+2026-11-18 23:08:34,784 open_clip.factory [INFO] - Using default SimpleTokenizer.
+[status] export {"note": "exporting onnx"}
+/home/runner/work/sanyacho-app/sanyacho-app/training/pipeline/export.py:85: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(net, (torch.randn(1, 3, 224, 224),), str(fp32), input_names=["pixel_values"],
+[status] export {"note": "fp32 evaluated", "onnx_vs_torch_max_abs_diff": 1.9073486328125e-05, "fp32_top1": 0.8478}
+2026-11-18 23:13:43,534 root [WARNING] - Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+2026-11-18 23:13:43,937 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:44,007 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.0/attn/MatMul_3]
+2026-11-18 23:13:44,007 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.0/attn/MatMul_4]
+2026-11-18 23:13:44,007 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:44,031 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:44,136 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:44,166 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:44,236 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.1/attn/MatMul_3]
+2026-11-18 23:13:44,236 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.1/attn/MatMul_4]
+2026-11-18 23:13:44,237 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:44,260 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:44,365 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:44,395 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:44,463 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.2/attn/MatMul_3]
+2026-11-18 23:13:44,463 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.2/attn/MatMul_4]
+2026-11-18 23:13:44,463 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:44,487 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:44,595 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:44,625 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:44,698 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.3/attn/MatMul_3]
+2026-11-18 23:13:44,698 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.3/attn/MatMul_4]
+2026-11-18 23:13:44,699 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:44,723 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:44,833 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:44,863 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:44,932 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.4/attn/MatMul_3]
+2026-11-18 23:13:44,932 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.4/attn/MatMul_4]
+2026-11-18 23:13:44,933 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:44,955 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:45,061 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:45,092 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:45,160 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.5/attn/MatMul_3]
+2026-11-18 23:13:45,160 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.5/attn/MatMul_4]
+2026-11-18 23:13:45,161 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:45,183 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:45,290 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:45,320 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:45,387 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.6/attn/MatMul_3]
+2026-11-18 23:13:45,387 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.6/attn/MatMul_4]
+2026-11-18 23:13:45,388 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:45,411 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:45,515 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:45,545 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:45,612 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.7/attn/MatMul_3]
+2026-11-18 23:13:45,612 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.7/attn/MatMul_4]
+2026-11-18 23:13:45,613 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:45,636 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:45,748 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:45,778 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:45,845 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.8/attn/MatMul_3]
+2026-11-18 23:13:45,846 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.8/attn/MatMul_4]
+2026-11-18 23:13:45,846 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:45,869 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:45,971 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:46,001 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:46,068 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.9/attn/MatMul_3]
+2026-11-18 23:13:46,068 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.9/attn/MatMul_4]
+2026-11-18 23:13:46,069 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:46,092 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:46,194 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:46,223 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:46,290 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.10/attn/MatMul_3]
+2026-11-18 23:13:46,290 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.10/attn/MatMul_4]
+2026-11-18 23:13:46,291 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:46,314 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:46,415 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:46,445 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/ln_1/Cast_output_0" not specified
+2026-11-18 23:13:46,513 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.11/attn/MatMul_3]
+2026-11-18 23:13:46,513 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.11/attn/MatMul_4]
+2026-11-18 23:13:46,514 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/attn/Reshape_3_output_0" not specified
+2026-11-18 23:13:46,536 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/ln_2/Cast_output_0" not specified
+2026-11-18 23:13:46,640 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:13:46,671 root [INFO] - Quantization parameters for tensor:"/visual/Gather_3_output_0" not specified
+2026-11-18 23:13:46,687 root [INFO] - Quantization parameters for tensor:"embedding" not specified
+[status] export {"note": "variant int8pc", "mb": 85.5, "ms_runner": 31.4, "top1": 0.8248945147679325, "toxic_shown_as_edible": 0.009685230024213076, "accepted": false}
+2026-11-18 23:15:31,293 root [WARNING] - Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+2026-11-18 23:15:31,501 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,548 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.0/attn/MatMul_3]
+2026-11-18 23:15:31,548 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.0/attn/MatMul_4]
+2026-11-18 23:15:31,549 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,551 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,555 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.0/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,559 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,563 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.1/attn/MatMul_3]
+2026-11-18 23:15:31,563 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.1/attn/MatMul_4]
+2026-11-18 23:15:31,563 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,565 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,569 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.1/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,573 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,577 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.2/attn/MatMul_3]
+2026-11-18 23:15:31,577 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.2/attn/MatMul_4]
+2026-11-18 23:15:31,578 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,579 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,583 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.2/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,588 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,591 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.3/attn/MatMul_3]
+2026-11-18 23:15:31,592 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.3/attn/MatMul_4]
+2026-11-18 23:15:31,592 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,594 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,598 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.3/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,602 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,606 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.4/attn/MatMul_3]
+2026-11-18 23:15:31,606 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.4/attn/MatMul_4]
+2026-11-18 23:15:31,607 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,608 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,612 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.4/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,617 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,621 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.5/attn/MatMul_3]
+2026-11-18 23:15:31,621 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.5/attn/MatMul_4]
+2026-11-18 23:15:31,621 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,623 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,627 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.5/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,631 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,635 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.6/attn/MatMul_3]
+2026-11-18 23:15:31,636 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.6/attn/MatMul_4]
+2026-11-18 23:15:31,636 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,638 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,642 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.6/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,672 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,676 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.7/attn/MatMul_3]
+2026-11-18 23:15:31,676 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.7/attn/MatMul_4]
+2026-11-18 23:15:31,677 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,678 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,683 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.7/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,687 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,691 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.8/attn/MatMul_3]
+2026-11-18 23:15:31,691 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.8/attn/MatMul_4]
+2026-11-18 23:15:31,692 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,693 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,698 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.8/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,702 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,706 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.9/attn/MatMul_3]
+2026-11-18 23:15:31,706 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.9/attn/MatMul_4]
+2026-11-18 23:15:31,707 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,708 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,712 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.9/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,717 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,721 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.10/attn/MatMul_3]
+2026-11-18 23:15:31,721 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.10/attn/MatMul_4]
+2026-11-18 23:15:31,722 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,723 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,728 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.10/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,732 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/ln_1/Cast_output_0" not specified
+2026-11-18 23:15:31,737 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.11/attn/MatMul_3]
+2026-11-18 23:15:31,737 root [INFO] - Ignore MatMul due to non constant B: /[/visual/transformer/resblocks.11/attn/MatMul_4]
+2026-11-18 23:15:31,737 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/attn/Reshape_3_output_0" not specified
+2026-11-18 23:15:31,739 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/ln_2/Cast_output_0" not specified
+2026-11-18 23:15:31,743 root [INFO] - Quantization parameters for tensor:"/visual/transformer/resblocks.11/mlp/gelu/Mul_1_output_0" not specified
+2026-11-18 23:15:31,748 root [INFO] - Quantization parameters for tensor:"/visual/Gather_3_output_0" not specified
+2026-11-18 23:15:31,750 root [INFO] - Quantization parameters for tensor:"embedding" not specified
+[status] export {"note": "variant int8", "mb": 85.1, "ms_runner": 31.4, "top1": 0.8245931283905967, "toxic_shown_as_edible": 0.015738498789346248, "accepted": false}
+[status] export {"note": "variant w8", "mb": 90.0, "ms_runner": 94.6, "top1": 0.8484026522001206, "toxic_shown_as_edible": 0.010895883777239709, "accepted": true}
+[status] export {"note": "done", "chosen": "w8", "chosen_mb": 90.0, "top1": 0.8484, "toxic_shown_as_edible": 0.010895883777239709}
+===== report 23:22:31 =====
+[status] report {"note": "done", "files": ["labels.json", "metrics.json", "plant.onnx", "ref_photos.zip", "report.md", "taxa_resolved.json"]}

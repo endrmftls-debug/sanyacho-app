@@ -1,0 +1,809 @@
+{
+ "places": {
+  "kr": [
+   [
+    6891,
+    "South Korea"
+   ]
+  ],
+  "ea": [
+   [
+    6737,
+    "Japan"
+   ],
+   [
+    6903,
+    "China"
+   ]
+  ]
+ },
+ "counts": {
+  "quercus": {
+   "total": 180,
+   "train": 120,
+   "val": 32,
+   "test": 28
+  },
+  "castanea": {
+   "total": 180,
+   "train": 128,
+   "val": 27,
+   "test": 25
+  },
+  "pinus_koraiensis": {
+   "total": 180,
+   "train": 130,
+   "val": 26,
+   "test": 24
+  },
+  "pinus_densiflora": {
+   "total": 180,
+   "train": 132,
+   "val": 20,
+   "test": 28
+  },
+  "corylus": {
+   "total": 180,
+   "train": 134,
+   "val": 20,
+   "test": 26
+  },
+  "juglans": {
+   "total": 180,
+   "train": 134,
+   "val": 21,
+   "test": 25
+  },
+  "actinidia": {
+   "total": 180,
+   "train": 134,
+   "val": 17,
+   "test": 29
+  },
+  "vitis": {
+   "total": 180,
+   "train": 121,
+   "val": 28,
+   "test": 31
+  },
+  "ampelopsis": {
+   "total": 180,
+   "train": 116,
+   "val": 32,
+   "test": 32
+  },
+  "akebia": {
+   "total": 180,
+   "train": 115,
+   "val": 28,
+   "test": 37
+  },
+  "rubus": {
+   "total": 180,
+   "train": 132,
+   "val": 17,
+   "test": 31
+  },
+  "morus": {
+   "total": 180,
+   "train": 130,
+   "val": 34,
+   "test": 16
+  },
+  "elaeagnus": {
+   "total": 180,
+   "train": 109,
+   "val": 29,
+   "test": 42
+  },
+  "crataegus": {
+   "total": 180,
+   "train": 128,
+   "val": 29,
+   "test": 23
+  },
+  "pyrus": {
+   "total": 180,
+   "train": 121,
+   "val": 27,
+   "test": 32
+  },
+  "diospyros_lotus": {
+   "total": 180,
+   "train": 132,
+   "val": 19,
+   "test": 29
+  },
+  "sorbus_commixta": {
+   "total": 123,
+   "train": 83,
+   "val": 18,
+   "test": 22
+  },
+  "schisandra": {
+   "total": 180,
+   "train": 141,
+   "val": 18,
+   "test": 21
+  },
+  "zanthoxylum": {
+   "total": 180,
+   "train": 125,
+   "val": 25,
+   "test": 30
+  },
+  "rosa_multiflora": {
+   "total": 180,
+   "train": 113,
+   "val": 41,
+   "test": 26
+  },
+  "cornus_kousa": {
+   "total": 180,
+   "train": 127,
+   "val": 30,
+   "test": 23
+  },
+  "vaccinium": {
+   "total": 180,
+   "train": 129,
+   "val": 30,
+   "test": 21
+  },
+  "pueraria": {
+   "total": 180,
+   "train": 123,
+   "val": 27,
+   "test": 30
+  },
+  "sasa": {
+   "total": 180,
+   "train": 128,
+   "val": 31,
+   "test": 21
+  },
+  "betula": {
+   "total": 180,
+   "train": 118,
+   "val": 24,
+   "test": 38
+  },
+  "acer_pictum": {
+   "total": 180,
+   "train": 121,
+   "val": 28,
+   "test": 31
+  },
+  "lindera": {
+   "total": 180,
+   "train": 117,
+   "val": 29,
+   "test": 34
+  },
+  "euonymus_alatus": {
+   "total": 180,
+   "train": 125,
+   "val": 26,
+   "test": 29
+  },
+  "robinia": {
+   "total": 180,
+   "train": 120,
+   "val": 30,
+   "test": 30
+  },
+  "rhododendron_mucronulatum": {
+   "total": 180,
+   "train": 123,
+   "val": 30,
+   "test": 27
+  },
+  "rhododendron_toxic": {
+   "total": 180,
+   "train": 120,
+   "val": 23,
+   "test": 37
+  },
+  "kalopanax": {
+   "total": 180,
+   "train": 116,
+   "val": 36,
+   "test": 28
+  },
+  "aralia_elata": {
+   "total": 180,
+   "train": 126,
+   "val": 33,
+   "test": 21
+  },
+  "aralia_cordata": {
+   "total": 180,
+   "train": 120,
+   "val": 28,
+   "test": 32
+  },
+  "eleutherococcus": {
+   "total": 176,
+   "train": 118,
+   "val": 36,
+   "test": 22
+  },
+  "smilax_china": {
+   "total": 180,
+   "train": 133,
+   "val": 20,
+   "test": 27
+  },
+  "taxus": {
+   "total": 180,
+   "train": 118,
+   "val": 29,
+   "test": 33
+  },
+  "toxicodendron": {
+   "total": 180,
+   "train": 130,
+   "val": 24,
+   "test": 26
+  },
+  "rhus_chinensis": {
+   "total": 180,
+   "train": 141,
+   "val": 18,
+   "test": 21
+  },
+  "dioscorea_edible": {
+   "total": 180,
+   "train": 124,
+   "val": 25,
+   "test": 31
+  },
+  "dioscorea_other": {
+   "total": 180,
+   "train": 136,
+   "val": 25,
+   "test": 19
+  },
+  "codonopsis": {
+   "total": 180,
+   "train": 127,
+   "val": 26,
+   "test": 27
+  },
+  "platycodon": {
+   "total": 180,
+   "train": 131,
+   "val": 24,
+   "test": 25
+  },
+  "adenophora": {
+   "total": 180,
+   "train": 127,
+   "val": 21,
+   "test": 32
+  },
+  "polygonatum": {
+   "total": 180,
+   "train": 124,
+   "val": 25,
+   "test": 31
+  },
+  "lilium": {
+   "total": 180,
+   "train": 134,
+   "val": 21,
+   "test": 25
+  },
+  "erythronium": {
+   "total": 180,
+   "train": 119,
+   "val": 25,
+   "test": 36
+  },
+  "allium_victorialis": {
+   "total": 180,
+   "train": 126,
+   "val": 25,
+   "test": 29
+  },
+  "allium_monanthum": {
+   "total": 180,
+   "train": 123,
+   "val": 38,
+   "test": 19
+  },
+  "allium_thunbergii": {
+   "total": 180,
+   "train": 124,
+   "val": 24,
+   "test": 32
+  },
+  "atractylodes": {
+   "total": 180,
+   "train": 120,
+   "val": 34,
+   "test": 26
+  },
+  "cirsium": {
+   "total": 180,
+   "train": 131,
+   "val": 30,
+   "test": 19
+  },
+  "calystegia": {
+   "total": 180,
+   "train": 126,
+   "val": 24,
+   "test": 30
+  },
+  "artemisia": {
+   "total": 180,
+   "train": 116,
+   "val": 33,
+   "test": 31
+  },
+  "plantago": {
+   "total": 180,
+   "train": 148,
+   "val": 17,
+   "test": 15
+  },
+  "taraxacum": {
+   "total": 180,
+   "train": 114,
+   "val": 35,
+   "test": 31
+  },
+  "pteridium": {
+   "total": 180,
+   "train": 130,
+   "val": 25,
+   "test": 25
+  },
+  "osmunda": {
+   "total": 180,
+   "train": 112,
+   "val": 31,
+   "test": 37
+  },
+  "matteuccia": {
+   "total": 180,
+   "train": 127,
+   "val": 35,
+   "test": 18
+  },
+  "aster_scaber": {
+   "total": 180,
+   "train": 120,
+   "val": 30,
+   "test": 30
+  },
+  "ligularia": {
+   "total": 132,
+   "train": 91,
+   "val": 18,
+   "test": 23
+  },
+  "solidago": {
+   "total": 180,
+   "train": 132,
+   "val": 26,
+   "test": 22
+  },
+  "pimpinella": {
+   "total": 15,
+   "train": 13,
+   "val": 0,
+   "test": 2
+  },
+  "hemerocallis": {
+   "total": 180,
+   "train": 125,
+   "val": 27,
+   "test": 28
+  },
+  "petasites": {
+   "total": 180,
+   "train": 122,
+   "val": 36,
+   "test": 22
+  },
+  "syneilesis": {
+   "total": 180,
+   "train": 115,
+   "val": 34,
+   "test": 31
+  },
+  "sedum": {
+   "total": 180,
+   "train": 140,
+   "val": 25,
+   "test": 15
+  },
+  "hosta": {
+   "total": 180,
+   "train": 118,
+   "val": 35,
+   "test": 27
+  },
+  "ixeris": {
+   "total": 180,
+   "train": 123,
+   "val": 26,
+   "test": 31
+  },
+  "lactuca_indica": {
+   "total": 180,
+   "train": 125,
+   "val": 34,
+   "test": 21
+  },
+  "chenopodium": {
+   "total": 180,
+   "train": 126,
+   "val": 32,
+   "test": 22
+  },
+  "portulaca": {
+   "total": 180,
+   "train": 130,
+   "val": 28,
+   "test": 22
+  },
+  "rumex": {
+   "total": 180,
+   "train": 142,
+   "val": 23,
+   "test": 15
+  },
+  "capsella": {
+   "total": 180,
+   "train": 128,
+   "val": 32,
+   "test": 20
+  },
+  "stellaria": {
+   "total": 180,
+   "train": 116,
+   "val": 32,
+   "test": 32
+  },
+  "oxalis": {
+   "total": 180,
+   "train": 124,
+   "val": 28,
+   "test": 28
+  },
+  "oenanthe": {
+   "total": 180,
+   "train": 130,
+   "val": 21,
+   "test": 29
+  },
+  "anthriscus": {
+   "total": 180,
+   "train": 114,
+   "val": 43,
+   "test": 23
+  },
+  "heracleum": {
+   "total": 113,
+   "train": 80,
+   "val": 11,
+   "test": 22
+  },
+  "angelica_gigas": {
+   "total": 18,
+   "train": 10,
+   "val": 6,
+   "test": 2
+  },
+  "veratrum": {
+   "total": 180,
+   "train": 125,
+   "val": 28,
+   "test": 27
+  },
+  "caltha": {
+   "total": 180,
+   "train": 128,
+   "val": 26,
+   "test": 26
+  },
+  "convallaria": {
+   "total": 180,
+   "train": 118,
+   "val": 33,
+   "test": 29
+  },
+  "phytolacca": {
+   "total": 180,
+   "train": 131,
+   "val": 25,
+   "test": 24
+  },
+  "cicuta": {
+   "total": 180,
+   "train": 132,
+   "val": 18,
+   "test": 30
+  },
+  "conium": {
+   "total": 180,
+   "train": 123,
+   "val": 30,
+   "test": 27
+  },
+  "angelica_toxic": {
+   "total": 35,
+   "train": 25,
+   "val": 7,
+   "test": 3
+  },
+  "aconitum": {
+   "total": 180,
+   "train": 117,
+   "val": 25,
+   "test": 38
+  },
+  "arisaema": {
+   "total": 180,
+   "train": 132,
+   "val": 24,
+   "test": 24
+  },
+  "pinellia": {
+   "total": 180,
+   "train": 119,
+   "val": 32,
+   "test": 29
+  },
+  "paris": {
+   "total": 180,
+   "train": 121,
+   "val": 35,
+   "test": 24
+  },
+  "farfugium": {
+   "total": 180,
+   "train": 127,
+   "val": 25,
+   "test": 28
+  },
+  "corydalis": {
+   "total": 180,
+   "train": 122,
+   "val": 32,
+   "test": 26
+  },
+  "amana": {
+   "total": 180,
+   "train": 133,
+   "val": 27,
+   "test": 20
+  },
+  "thalictrum": {
+   "total": 180,
+   "train": 126,
+   "val": 27,
+   "test": 27
+  },
+  "scopolia": {
+   "total": 100,
+   "train": 65,
+   "val": 19,
+   "test": 16
+  },
+  "datura": {
+   "total": 180,
+   "train": 125,
+   "val": 25,
+   "test": 30
+  },
+  "pulsatilla": {
+   "total": 180,
+   "train": 127,
+   "val": 18,
+   "test": 35
+  },
+  "chelidonium": {
+   "total": 180,
+   "train": 122,
+   "val": 34,
+   "test": 24
+  },
+  "ranunculus": {
+   "total": 180,
+   "train": 119,
+   "val": 35,
+   "test": 26
+  },
+  "clematis": {
+   "total": 180,
+   "train": 135,
+   "val": 25,
+   "test": 20
+  },
+  "aristolochia": {
+   "total": 180,
+   "train": 136,
+   "val": 21,
+   "test": 23
+  },
+  "euphorbia": {
+   "total": 180,
+   "train": 139,
+   "val": 23,
+   "test": 18
+  },
+  "symplocarpus": {
+   "total": 180,
+   "train": 121,
+   "val": 24,
+   "test": 35
+  },
+  "dictamnus": {
+   "total": 180,
+   "train": 128,
+   "val": 29,
+   "test": 23
+  },
+  "solanum_nigrum": {
+   "total": 180,
+   "train": 115,
+   "val": 39,
+   "test": 26
+  },
+  "adonis": {
+   "total": 180,
+   "train": 127,
+   "val": 32,
+   "test": 21
+  },
+  "lycoris": {
+   "total": 180,
+   "train": 119,
+   "val": 31,
+   "test": 30
+  },
+  "amanita": {
+   "total": 180,
+   "train": 141,
+   "val": 16,
+   "test": 23
+  },
+  "trichoderma": {
+   "total": 180,
+   "train": 135,
+   "val": 20,
+   "test": 25
+  },
+  "omphalotus": {
+   "total": 132,
+   "train": 94,
+   "val": 17,
+   "test": 21
+  },
+  "hypholoma_fasciculare": {
+   "total": 180,
+   "train": 136,
+   "val": 21,
+   "test": 23
+  },
+  "entoloma": {
+   "total": 180,
+   "train": 121,
+   "val": 27,
+   "test": 32
+  },
+  "gymnopilus": {
+   "total": 180,
+   "train": 135,
+   "val": 22,
+   "test": 23
+  },
+  "tricholoma_matsutake": {
+   "total": 180,
+   "train": 115,
+   "val": 34,
+   "test": 31
+  },
+  "sarcodon": {
+   "total": 180,
+   "train": 149,
+   "val": 18,
+   "test": 13
+  },
+  "lentinula": {
+   "total": 180,
+   "train": 134,
+   "val": 26,
+   "test": 20
+  },
+  "pleurotus": {
+   "total": 180,
+   "train": 139,
+   "val": 24,
+   "test": 17
+  },
+  "ramaria": {
+   "total": 180,
+   "train": 119,
+   "val": 33,
+   "test": 28
+  },
+  "ganoderma": {
+   "total": 180,
+   "train": 126,
+   "val": 23,
+   "test": 31
+  },
+  "cantharellus": {
+   "total": 63,
+   "train": 47,
+   "val": 9,
+   "test": 7
+  },
+  "hericium": {
+   "total": 180,
+   "train": 119,
+   "val": 31,
+   "test": 30
+  },
+  "auricularia": {
+   "total": 180,
+   "train": 122,
+   "val": 28,
+   "test": 30
+  },
+  "armillaria": {
+   "total": 180,
+   "train": 131,
+   "val": 32,
+   "test": 17
+  },
+  "hypholoma_lateritium": {
+   "total": 180,
+   "train": 126,
+   "val": 34,
+   "test": 20
+  },
+  "other_plant": {
+   "total": 420,
+   "train": 297,
+   "val": 60,
+   "test": 63
+  },
+  "other_fungi": {
+   "total": 420,
+   "train": 285,
+   "val": 73,
+   "test": 62
+  }
+ },
+ "dropped": {},
+ "provisional": {
+  "angelica_gigas": {
+   "total": 18,
+   "train": 10,
+   "val": 6,
+   "test": 2
+  },
+  "angelica_toxic": {
+   "total": 35,
+   "train": 25,
+   "val": 7,
+   "test": 3
+  },
+  "pimpinella": {
+   "total": 15,
+   "train": 13,
+   "val": 0,
+   "test": 2
+  }
+ },
+ "min_per_class": 40,
+ "n_classes": 127,
+ "n_images": 22447,
+ "api_calls": 42
+}
