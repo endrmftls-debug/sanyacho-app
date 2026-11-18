@@ -1,7 +1,8 @@
 """Add 도감 reference photos for entries the AI model has no photos for (classes dropped from training).
 
-Runs during the APK build (needs internet). Uses CC-licensed research-grade iNaturalist photos that allow
-adaptation (no "ND"), prefers photos from South Korea, and records the credit for each photo.
+Runs during the APK build (needs internet). Uses CC-licensed iNaturalist photos that allow adaptation
+(no "ND"): first the photos the community picked to represent the taxon, then research-grade observations
+(South Korea first). Records the credit for each photo.
 When an entry covers several species (e.g. 개구릿대·지리강활), each photo is labelled with its species.
 Never fails the build: if iNaturalist can't be reached, the app simply shows those entries without photos.
 """
@@ -63,27 +64,43 @@ def korea_place():
     return None
 
 
+def usable(p):
+    return (p.get("license_code") or "").lower() in LICENSES and (p.get("medium_url") or p.get("url")) and not p.get("flags")
+
+
+def record(p, link):
+    url = p.get("medium_url") or p["url"]
+    for size in ("square", "small", "thumb", "large", "original"):
+        url = url.replace(f"/{size}.", "/medium.")
+    return {"key": p.get("id") or url, "url": url, "attribution": p.get("attribution", ""),
+            "license": p["license_code"].lower(), "obs_url": link}
+
+
 def candidates(taxon_id, place):
-    """Best-voted research-grade observations with an adaptable CC photo: Korea first, then anywhere."""
+    """Photos the iNaturalist community chose to represent the taxon, then best-voted research-grade
+    observations (Korea first, then anywhere). Only licences that allow resizing, with credit."""
     out, seen = [], set()
+    res = get(f"/taxa/{taxon_id}", {}).get("results", [])
+    for tp in (res[0].get("taxon_photos") or []) if res else []:
+        p = tp.get("photo") or {}
+        if usable(p) and p.get("id") not in seen:
+            seen.add(p.get("id"))
+            out.append(record(p, f"https://www.inaturalist.org/photos/{p.get('id')}"))
+            if len(out) >= PER_CLASS:
+                return out
+    seen_obs = set()
     for pl in ([place] if place else []) + [None]:
         params = {"taxon_id": taxon_id, "quality_grade": "research", "photos": "true",
                   "photo_license": ",".join(LICENSES), "per_page": 30, "order_by": "votes"}
         if pl:
             params["place_id"] = pl
         for o in get("/observations", params).get("results", []):
-            if o["id"] in seen:
+            p = next((p for p in o.get("photos", []) if usable(p)), None)
+            if not p or o["id"] in seen_obs or p.get("id") in seen:
                 continue
-            for p in o.get("photos", []):
-                if (p.get("license_code") or "").lower() in LICENSES and p.get("url"):
-                    url = p["url"]
-                    for size in ("square", "small", "thumb", "large", "original"):
-                        url = url.replace(f"/{size}.", "/medium.")
-                    seen.add(o["id"])
-                    out.append({"obs": o["id"], "url": url, "attribution": p.get("attribution", ""),
-                                "license": p["license_code"].lower(),
-                                "obs_url": f"https://www.inaturalist.org/observations/{o['id']}"})
-                    break
+            seen_obs.add(o["id"])
+            seen.add(p.get("id"))
+            out.append(record(p, f"https://www.inaturalist.org/observations/{o['id']}"))
             if len(out) >= PER_CLASS:
                 return out
     return out
@@ -128,8 +145,8 @@ def main():
                 order = [r for g in groups for r in g]  # aliases: first name that has photos wins
             picked, used = [], set()
             for r in order:
-                if r["obs"] not in used and len(picked) < PER_CLASS:
-                    used.add(r["obs"])
+                if r["key"] not in used and len(picked) < PER_CLASS:
+                    used.add(r["key"])
                     picked.append(r)
             out = []
             (REF / c["id"]).mkdir(parents=True, exist_ok=True)
