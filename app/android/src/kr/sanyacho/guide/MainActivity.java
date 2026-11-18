@@ -120,6 +120,13 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public void onPermissionRequestCanceled(PermissionRequest request) {
+                if (pendingMedia == request) {
+                    pendingMedia = null;
+                }
+            }
+
+            @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 if (hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     callback.invoke(origin, true, false);
@@ -279,6 +286,14 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (web != null) {
+            web.evaluateJavascript("window.appResume && window.appResume()", null);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         if (web != null) {
             web.destroy();
@@ -297,6 +312,22 @@ public class MainActivity extends Activity {
                         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                     } else {
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                    }
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void openAppSettings() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Intent i = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                Uri.parse("package:" + getPackageName()));
+                        startActivity(i);
+                    } catch (Exception ignored) {
+                        // settings screen not available
                     }
                 }
             });

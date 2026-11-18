@@ -253,3 +253,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 16px 16p
   .spinner { animation-duration: 3s; }
   .flash.on { animation: none; }
 }
+.viewport .camerr { background: rgba(16, 35, 26, .92); font-size: 16px; line-height: 1.5; }
+.viewport .camerr .btn { margin-top: 12px; }
+.viewport .camerr #camretry { background: var(--signal); border-color: var(--signal); color: #000; }
+.viewport .camerr .btn.ghost { background: transparent; color: #fff; border-color: #fff; }

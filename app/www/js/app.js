@@ -72,13 +72,9 @@ window.appBack = () => {
   else location.hash = "#home";
   return true;
 };
-window.appPause = () => {
-  if (cleanup && (location.hash.startsWith("#camera") || location.hash.startsWith("#sos"))) {
-    try { cleanup(); } catch (_) { /* ignore */ }
-    cleanup = null;
-    location.hash.startsWith("#camera") && (location.hash = "#home");
-  }
-};
+// The camera screen handles pause/resume itself (it must stay open while Android shows the permission box).
+window.appPause = () => {};
+window.appResume = null;
 
 async function boot() {
   frame();

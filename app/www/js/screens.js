@@ -91,7 +91,11 @@ export function camera(view) {
   view.innerHTML = `
     <section class="cam">
       <div class="viewport"><video playsinline muted autoplay></video><div class="guide"></div>
-        <div class="step" id="step"></div><div class="camerr" id="camerr" hidden></div></div>
+        <div class="step" id="step"></div>
+        <div class="camerr" id="camerr" hidden><div><p id="camerrmsg"></p>
+          <button class="btn" id="camretry">카메라 다시 켜기</button>
+          <button class="btn ghost" id="camsettings" hidden style="margin-top:8px">권한 설정 열기</button>
+          <p class="small" id="camerrdetail" style="margin-top:10px;opacity:.75"></p></div></div></div>
       <p class="tip" id="tip"></p>
       <div class="shots" id="shots"></div>
       <div class="camctl">
@@ -103,6 +107,8 @@ export function camera(view) {
     </section>`;
   const video = $("video", view);
   let stream = null;
+  let starting = false;
+  let alive = true; // false once the user leaves this screen
   let torchOn = false;
   keepScreenOn(true);
 
@@ -110,7 +116,7 @@ export function camera(view) {
     const n = app.shots.length;
     $("#step", view).textContent = n < MAX_SHOTS ? `${n + 1}/${MAX_SHOTS}  ${SHOT_TIPS[n]}` : "4장 모두 찍었어요";
     $("#tip", view).textContent = n === 0 ? "식물이 네모 안에 꽉 차게 찍어 주세요." :
-      n < MAX_SHOTS ? `다음: ${SHOT_TIPS[n]}. 한 장만으로도 분석할 수 있어요.` : "분석하기를 눌러 주세요.";
+      n < MAX_SHOTS ? `다음: ${SHOT_TIPS[n]}. 한 장만으로도 분석할 수 있어요.` : "분석을 눌러 주세요.";
     $("#shots", view).innerHTML = Array.from({ length: MAX_SHOTS }, (_, i) => {
       const s = app.shots[i];
       return s ? `<div class="shot"><img src="${s.url}" alt="${i + 1}번째 사진"><button data-del="${i}" aria-label="${i + 1}번째 사진 지우기">×</button></div>`
@@ -127,35 +133,97 @@ export function camera(view) {
   };
   paint();
 
-  (async () => {
-    try {
-      stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1440 } }, audio: false,
-      });
-      video.srcObject = stream;
-      const track = stream.getVideoTracks()[0];
-      const caps = track.getCapabilities ? track.getCapabilities() : {};
-      if (caps.torch) {
-        const t = $("#torch", view);
-        t.hidden = false;
-        $("#torchgap", view).remove();
-        t.onclick = async () => {
-          torchOn = !torchOn;
-          try { await track.applyConstraints({ advanced: [{ torch: torchOn }] }); } catch (_) { torchOn = false; }
-          t.textContent = torchOn ? "불 끄기" : "불 켜기";
-        };
-      }
-    } catch (e) {
-      const box = $("#camerr", view);
-      box.hidden = false;
-      box.textContent = e && e.name === "NotAllowedError"
-        ? "카메라 권한이 필요해요. 휴대폰 설정에서 이 앱의 카메라 권한을 허용하거나, 아래 '갤러리에서 고르기'를 쓰세요."
-        : "카메라를 켜지 못했어요. 아래 '갤러리에서 고르기'로 찍어 둔 사진을 쓸 수 있어요.";
+  const stopStream = () => {
+    if (stream) stream.getTracks().forEach((t) => t.stop());
+    stream = null;
+    video.srcObject = null;
+  };
+  const isLive = () => !!stream && stream.getVideoTracks().some((t) => t.readyState === "live");
+
+  const showError = (e) => {
+    const name = (e && e.name) || "";
+    let msg = "카메라를 켜지 못했어요.";
+    if (name === "NotAllowedError" || name === "SecurityError") {
+      msg = "카메라 권한이 꺼져 있어요. '권한 설정 열기'에서 카메라를 허용한 뒤 '카메라 다시 켜기'를 눌러 주세요.";
+    } else if (name === "NotReadableError" || name === "AbortError" || name === "TrackStartError") {
+      msg = "다른 앱이 카메라를 쓰고 있거나, 빠른 설정의 '카메라 액세스'가 꺼져 있을 수 있어요. 확인한 뒤 '카메라 다시 켜기'를 눌러 주세요.";
+    } else if (name === "NotFoundError" || name === "OverconstrainedError") {
+      msg = "카메라를 찾지 못했어요.";
     }
-  })();
+    $("#camerrmsg", view).textContent = msg + " 아래 '갤러리에서 고르기'로 사진을 골라도 돼요.";
+    $("#camerrdetail", view).textContent = e ? `오류: ${name || "알 수 없음"} ${e.message || ""}`.trim() : "";
+    const settings = $("#camsettings", view);
+    const bridge = window.AndroidApp && typeof window.AndroidApp.openAppSettings === "function";
+    settings.hidden = !(bridge && (name === "NotAllowedError" || name === "SecurityError"));
+    $("#camerr", view).hidden = false;
+  };
+
+  const setupTorch = (track) => {
+    const caps = track.getCapabilities ? track.getCapabilities() : {};
+    const t = $("#torch", view);
+    if (!caps.torch || !t) return;
+    t.hidden = false;
+    $("#torchgap", view)?.remove();
+    torchOn = false;
+    t.textContent = "불 켜기";
+    t.onclick = async () => {
+      torchOn = !torchOn;
+      try { await track.applyConstraints({ advanced: [{ torch: torchOn }] }); } catch (_) { torchOn = false; }
+      t.textContent = torchOn ? "불 끄기" : "불 켜기";
+    };
+  };
+
+  // Ask for the back camera; fall back to simpler requests if a phone refuses the first one.
+  const start = async () => {
+    if (!alive || starting || isLive()) return;
+    starting = true;
+    $("#camerr", view).hidden = true;
+    const tries = [
+      { video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1440 } }, audio: false },
+      { video: { facingMode: { ideal: "environment" } }, audio: false },
+      { video: true, audio: false },
+    ];
+    let last = null;
+    for (const c of tries) {
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          throw Object.assign(new Error("이 화면에서는 카메라를 쓸 수 없어요"), { name: "NotSupportedError" });
+        }
+        const s = await navigator.mediaDevices.getUserMedia(c);
+        if (!alive) { s.getTracks().forEach((t) => t.stop()); starting = false; return; } // user already left
+        stopStream();
+        stream = s;
+        video.srcObject = s;
+        try { await video.play(); } catch (_) { /* autoplay is allowed in the app */ }
+        const track = s.getVideoTracks()[0];
+        track.addEventListener("ended", () => { if (alive && stream === s) stream = null; });
+        setupTorch(track);
+        starting = false;
+        return;
+      } catch (e) {
+        last = e;
+        if (e && (e.name === "NotAllowedError" || e.name === "SecurityError" || e.name === "NotSupportedError")) break;
+      }
+    }
+    starting = false;
+    if (alive) showError(last);
+  };
+
+  // Android takes the camera away while another screen (permission box, gallery) is on top; turn it back on after.
+  const onVisible = () => { if (document.visibilityState === "visible") start(); };
+  document.addEventListener("visibilitychange", onVisible);
+  window.appResume = () => start();
+  $("#camretry", view).onclick = () => { stopStream(); start(); };
+  $("#camsettings", view).onclick = () => { try { window.AndroidApp.openAppSettings(); } catch (_) { /* not in the app */ } };
+  start();
 
   $("#shutter", view).onclick = async () => {
-    if (!video.videoWidth || app.shots.length >= MAX_SHOTS) return;
+    if (app.shots.length >= MAX_SHOTS) return;
+    if (!isLive() || !video.videoWidth) {
+      toast("카메라가 아직 켜지지 않았어요.");
+      start();
+      return;
+    }
     const vw = video.videoWidth;
     const vh = video.videoHeight;
     const s = Math.min(vw, vh);
@@ -167,12 +235,15 @@ export function camera(view) {
     await addCanvas(c);
     paint();
   };
-  $("#gal", view).onchange = async (ev) => { await addFiles(ev.target.files, false); paint(); };
+  $("#gal", view).onchange = async (ev) => { await addFiles(ev.target.files, false); if (alive) paint(); };
   $("#analyze", view).onclick = () => { app.result = null; location.hash = "#result"; };
 
   return () => {
+    alive = false;
+    document.removeEventListener("visibilitychange", onVisible);
+    if (window.appResume) window.appResume = null;
     keepScreenOn(false);
-    if (stream) stream.getTracks().forEach((t) => t.stop());
+    stopStream();
   };
 }
 
