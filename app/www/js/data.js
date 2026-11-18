@@ -26,10 +26,21 @@ export async function loadData() {
   if (lb) {
     for (const c of lb.classes) {
       const e = state.byId.get(c.id);
-      if (e) e.aiAcc = c.test_acc;
+      if (!e) continue;
+      e.aiAcc = c.test_acc;
+      e.aiProv = !!c.provisional;
+      e.aiPhotos = c.photos;
     }
   }
   return state;
+}
+
+// How well the camera AI knows an entry: "learned", "provisional" (AI 참고용: learned from few photos),
+// "unknown" (not in the model), or null while no model is installed.
+export function aiKnows(e) {
+  if (!state.labels) return null;
+  if (e.aiProv) return "provisional";
+  return state.labels.classes.some((c) => c.id === e.id) ? "learned" : "unknown";
 }
 
 export const data = state;

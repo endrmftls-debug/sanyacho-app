@@ -1,6 +1,6 @@
 // All screens. Each returns an optional cleanup function (stop camera, GPS, sound...).
 import { $, $$, esc, josa, pct, VERDICT, verdictOf, badge, toast, fmtDate, keepScreenOn } from "./util.js";
-import { data, entry, photos, firstPhoto, inSeason } from "./data.js";
+import { data, entry, photos, firstPhoto, inSeason, aiKnows } from "./data.js";
 import { aiStatus, onAIChange, loadAI, classify, decide } from "./ai.js";
 import { addFind, listFinds, getFind, deleteFind } from "./store.js";
 import { getPosition, watchPosition, posErrorText, dms, distanceM, bearingDeg, direction, fmtDistance } from "./geo.js";
@@ -45,7 +45,11 @@ export function home(view) {
   const box = $("#aistatus", view);
   const paint = (s) => {
     box.classList.toggle("err", s.status === "error" || s.status === "missing");
-    if (s.status === "ready") box.textContent = `AI 준비 완료: ${data.labels.classes.length}종류를 알아봐요. 인터넷 없이 동작해요.`;
+    if (s.status === "ready") {
+      const n = data.labels.classes.length;
+      const prov = data.labels.classes.filter((c) => c.provisional).length;
+      box.textContent = `AI 준비 완료: ${n}종류를 알아봐요${prov ? `(그중 ${prov}종류는 참고용)` : ""}. 인터넷 없이 동작해요.`;
+    }
     else if (s.status === "loading") box.innerHTML = `AI 준비 중… ${Math.round(s.progress * 100)}%<div class="meter" style="--p:${s.progress}"><i></i></div>`;
     else if (s.status === "error" || s.status === "missing") box.textContent = `AI를 불러오지 못했어요: ${s.error} 도감은 그대로 쓸 수 있어요.`;
     else box.textContent = "AI 준비 전";
@@ -248,7 +252,19 @@ export function camera(view) {
 }
 
 /* ---------------- result ---------------- */
+function provNote(d) {
+  if (!d.provisional) return "";
+  const n = d.top.c.photos;
+  const name = nameOf(d.top.c.id);
+  const why = `AI 참고용: ${esc(name)}${josa(name, "은", "는")} ${n ? `사진 ${n}장으로만` : "적은 사진으로"} 배운 종류라 틀릴 수 있어요.`;
+  return `<p class="prov">${why}${d.kind === "deadly" || d.kind === "toxic" ? " 그래도 독초일 수 있으니 먹지 마세요." : ""}</p>`;
+}
+
 function signHTML(d) {
+  return signCore(d).replace(/<\/div>$/, `${provNote(d)}</div>`);
+}
+
+function signCore(d) {
   const t = d.top;
   const name = esc(nameOf(t.c.id));
   const sub = (s) => `<p class="sub">${s}</p>`;
@@ -279,6 +295,10 @@ function adviceHTML(d) {
     case "mushroom":
       return `<p>버섯은 사진으로 먹을 수 있는지 알 수 없어요. 독버섯 가운데에는 조금만 먹어도 목숨을 잃는 것이 있어요.</p>`;
     case "unsure":
+      if (d.provisional) {
+        return `<p>AI가 덜 배운 종류라 사진만으로는 판단하지 않아요. 도감의 사진·생김새·닮은 독초와 직접 비교해 보세요.</p>
+          <a class="btn ghost" href="#sp/${top}">${esc(nameOf(top))} 도감에서 비교하기</a>`;
+      }
       return `<p>잎 뒷면, 줄기, 꽃이나 열매를 더 찍어 보세요. 그래도 모르겠으면 먹지 않는 것이 안전해요.</p>`;
     case "deadly":
     case "toxic":
@@ -310,7 +330,7 @@ export function result(view) {
           const vc = vcls(r.c.category, r.c.group);
           const lab = r.c.group === "mushroom" ? "버섯" : (VERDICT[entry(r.c.id)?.v]?.label || "");
           return `<li><a href="#sp/${r.c.id}" style="--c:var(--${vc === "fungus" ? "fungus" : vc})">
-            <span class="n">${esc(nameOf(r.c.id))}${lab ? ` <span class="badge ${vc}">${esc(lab)}</span>` : ""}</span>
+            <span class="n">${esc(nameOf(r.c.id))}${lab ? ` <span class="badge ${vc}">${esc(lab)}</span>` : ""}${r.c.provisional ? ` <span class="tag-prov">AI 참고용</span>` : ""}</span>
             <span class="p">${pct(r.p)}</span><span class="b" style="--p:${r.p.toFixed(3)}"><i></i></span></a></li>`;
         }).join("")}</ol>
         <p class="small muted" style="margin-top:8px">${app.shots.length === 1 ? "사진 1장으로 판단했어요. 잎 뒷면·줄기·꽃을 더 찍으면 더 정확해요." : `사진 ${app.shots.length}장을 함께 판단했어요.`}</p>
@@ -360,6 +380,18 @@ async function saveFind(d) {
 }
 
 /* ---------------- species page ---------------- */
+function aiLine(e) {
+  switch (aiKnows(e)) {
+    case "provisional":
+      return `<span class="tag-prov">AI 참고용</span><span class="small muted">사진 ${e.aiPhotos || "몇"}장으로만 배워서 카메라 결과는 참고만 하세요</span>`;
+    case "learned":
+      return typeof e.aiAcc === "number" ? `<span class="small muted">AI 시험 정답률 ${Math.round(e.aiAcc * 100)}%</span>` : "";
+    case "unknown":
+      return `<span class="small muted">아직 AI가 사진으로 알아보지 못하는 종류예요</span>`;
+    default:
+      return "";
+  }
+}
 function listHTML(items) {
   return `<ul>${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
 }
@@ -390,8 +422,7 @@ export function species(view, id, query) {
         <p class="sci">${esc(e.sci)}${e.fam ? `<span class="muted" style="font-style:normal">, ${esc(e.fam)}</span>` : ""}</p>
         <div class="meta">${badge(e)}
           ${fromResult ? `<span class="small">AI 판단 ${pct(app.result.top.p)}</span>` : ""}
-          ${typeof e.aiAcc === "number" ? `<span class="small muted">AI 시험 정답률 ${Math.round(e.aiAcc * 100)}%</span>`
-            : data.labels ? `<span class="small muted">아직 AI가 사진으로 알아보지 못하는 종류예요</span>` : ""}</div>
+          ${aiLine(e)}</div>
       </header>
       <p class="lead">${esc(e.sum)}</p>
       ${twins.length ? `<h2>닮은 식물과 구별하기</h2><div class="twins">${twins.map(([tid, why]) => {
@@ -437,7 +468,7 @@ function paintEat(box, e) {
 
 /* ---------------- 도감 ---------------- */
 const FILTERS = [
-  ["all", "전체"], ["food", "먹을 수 있음"], ["danger", "독초"], ["fungus", "버섯"], ["season", "이번 달"],
+  ["all", "전체"], ["food", "먹을 수 있음"], ["danger", "독초"], ["fungus", "버섯"], ["season", "이번 달"], ["ai", "AI 참고용"],
 ];
 let bookState = { q: "", f: "all" };
 
@@ -455,16 +486,21 @@ export function book(view) {
       if (bookState.f === "danger" && !(e.v === "toxic" || e.v === "deadly" || e.v === "inedible")) return false;
       if (bookState.f === "fungus" && e.v !== "mushroom") return false;
       if (bookState.f === "season" && !((e.v === "edible" || e.v === "edible_caution") && (e.months || []).includes(m))) return false;
+      if (bookState.f === "ai" && !["provisional", "unknown"].includes(aiKnows(e))) return false;
       if (!q) return true;
       return [e.ko, ...(e.aka || []), e.sci].join(" ").toLowerCase().includes(q);
     }).sort((a, b) => a.ko.localeCompare(b.ko, "ko"));
     $("#rows", view).innerHTML = rows.length ? rows.map((e) => {
       const v = verdictOf(e);
       const ph = firstPhoto(e.id);
+      const ai = aiKnows(e);
+      const line = bookState.f === "ai"
+        ? (ai === "provisional" ? `사진 ${e.aiPhotos || "몇"}장으로만 배웠어요. 카메라 결과는 참고만 하세요.` : "카메라 AI가 아직 알아보지 못해요. 도감으로 확인하세요.")
+        : (e.sum.length > 46 ? e.sum.slice(0, 45) + "…" : e.sum);
       return `<li><a class="c-${v.cls}" href="#sp/${e.id}">${ph ? `<img class="th" src="${ph}" alt="" loading="lazy">` : `<span class="th"></span>`}
-        <span><b>${esc(e.ko)}</b><small>${esc(e.sum.length > 46 ? e.sum.slice(0, 45) + "…" : e.sum)}</small></span>
+        <span><b>${esc(e.ko)}${ai === "provisional" ? ` <span class="tag-prov">AI 참고용</span>` : ""}</b><small>${esc(line)}</small></span>
         <span class="right">${esc(v.label.replace(": 먹지 마세요", ""))}</span></a></li>`;
-    }).join("") : `<li class="empty">찾는 식물이 없어요.</li>`;
+    }).join("") : `<li class="empty">${bookState.f === "ai" && !q ? (data.labels ? "AI가 도감의 모든 종류를 배웠어요." : "AI 모델이 없어서 확인할 수 없어요.") : "찾는 식물이 없어요."}</li>`;
   };
   paint();
   $(".search", view).oninput = (ev) => { bookState.q = ev.target.value; paint(); };

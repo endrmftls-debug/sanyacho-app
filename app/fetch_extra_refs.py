@@ -1,4 +1,5 @@
-"""Add 도감 reference photos for entries the AI model has no photos for (classes dropped from training).
+"""Add or replace 도감 reference photos: entries the AI model has no photos for, entries that join look-alike
+species (photos labelled by species), and entries whose training photos don't show the plant well.
 
 Runs during the APK build (needs internet). Uses CC-licensed iNaturalist photos that allow adaptation
 (no "ND"): research-grade observations from South Korea alternating with the photos the community picked
@@ -23,6 +24,12 @@ LICENSES = ["cc0", "cc-by", "cc-by-sa", "cc-by-nc", "cc-by-nc-sa"]
 PER_CLASS = 3
 # names to try first when the class list's name finds nothing useful on iNaturalist
 ALIASES = {"sasa": ["Sasa borealis", "Sasa"]}
+# entries that join look-alike species under one name: their photos always say which species they show
+# (the class list gives the species in the same order as the Korean names: 개구릿대 = Angelica anomala)
+LABELLED = {"angelica_toxic"}
+# entries whose training photos don't show the plant well (조릿대: a seed head in a hand, a dead leaf on snow):
+# use the photos iNaturalist's community picked to represent the species first
+REPRESENTATIVE = {"sasa"}
 
 session = requests.Session()
 session.headers.update({"User-Agent": "sanyacho-app-build/1.0 (offline plant guide; GitHub Actions)"})
@@ -99,13 +106,16 @@ def curated(taxon_id):
     return [record(p, f"https://www.inaturalist.org/photos/{p.get('id')}") for p in photos if usable(p)][:PER_CLASS]
 
 
-def candidates(taxon_id, place):
+def candidates(taxon_id, place, representative_first=False):
     """Korean observations (the local form) take turns with the community's representative photos;
     observations from anywhere fill the rest. Observation photos alone can be odd (a carved stump),
     representative photos alone can show an unusual variety, so mixing them gives the steadiest set."""
     local = observed(taxon_id, place) if place else []
     picks = curated(taxon_id)
-    mixed = [g[i] for i in range(PER_CLASS) for g in (local, picks) if i < len(g)]
+    if representative_first:
+        mixed = picks + local
+    else:
+        mixed = [g[i] for i in range(PER_CLASS) for g in (local, picks) if i < len(g)]
     if len({r["key"] for r in mixed}) < PER_CLASS:
         mixed += observed(taxon_id, None)
     out, seen = [], set()
@@ -120,7 +130,7 @@ def plan(c):
     """(scientific name, Korean label) pairs; labels only when the entry names one species per taxon."""
     names = ALIASES.get(c["id"]) or [t.strip() for t in c["taxa"].split(";") if t.strip()]
     kos = [k.strip() for k in c["ko"].split("·")]
-    labels = kos if len(names) > 1 and len(kos) == len(names) and c["id"] not in ALIASES else [None] * len(names)
+    labels = kos if c["id"] in LABELLED and len(kos) == len(names) else [None] * len(names)
     return list(zip(names, labels))
 
 
@@ -128,8 +138,8 @@ def main():
     att_path = REF / "attribution.json"
     att = json.loads(att_path.read_text(encoding="utf-8")) if att_path.exists() else {}
     classes = list(csv.DictReader(open(ROOT / "training" / "classes.csv", encoding="utf-8")))
-    todo = [c for c in classes if c["group"] != "other" and not att.get(c["id"])]
-    print("entries without photos:", [c["id"] for c in todo])
+    todo = [c for c in classes if c["group"] != "other" and (not att.get(c["id"]) or c["id"] in LABELLED | REPRESENTATIVE)]
+    print("entries to fill:", [c["id"] for c in todo])
     if not todo:
         return
     try:
@@ -149,7 +159,7 @@ def main():
                     continue
                 ids.add(t["id"])
                 print(f"  {c['id']}: {name} -> {t['name']} ({t['id']})")
-                groups.append([dict(r, name=label) for r in candidates(t["id"], place)])
+                groups.append([dict(r, name=label) for r in candidates(t["id"], place, c["id"] in REPRESENTATIVE)])
             if any(r["name"] for g in groups for r in g):
                 order = [g[i] for i in range(PER_CLASS) for g in groups if i < len(g)]  # take turns per species
             else:

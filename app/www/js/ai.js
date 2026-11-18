@@ -154,11 +154,14 @@ export function decide(probs) {
     if (DANGER.has(r.c.category)) tox += r.p;
   }
   const topToxic = ranked.find((r) => DANGER.has(r.c.category));
-  const base = { ranked, top, mush, tox, topToxic, warn: tox >= th.toxic_warn && !DANGER.has(top.c.category) };
+  const provisional = !!top.c.provisional;
+  const base = { ranked, top, mush, tox, topToxic, provisional, warn: tox >= th.toxic_warn && !DANGER.has(top.c.category) };
   if (mush >= 0.5) return { ...base, kind: "mushroom" };
   // Saying "this may be poisonous" needs less certainty than saying "this may be edible".
   if (DANGER.has(top.c.category) && top.p >= MIN_DANGER) return { ...base, kind: top.c.category === "deadly" ? "deadly" : "toxic" };
   if (top.c.id === "other_plant" || top.p < Math.max(th.confident, MIN_CONFIDENT)) return { ...base, kind: "unsure" };
+  // "AI 참고용" kinds were learned from too few photos: never call them edible (or "not food"), however confident.
+  if (provisional) return { ...base, kind: "unsure" };
   if (top.c.category === "inedible") return { ...base, kind: "inedible" };
   if (EDIBLE.has(top.c.category)) return { ...base, kind: "edible" };
   return { ...base, kind: "unsure" };
