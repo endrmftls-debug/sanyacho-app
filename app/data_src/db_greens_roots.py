@@ -97,7 +97,7 @@ dict(id="allium_thunbergii", ko="산부추류", aka=["산부추", "두메부추"
      like=[["lycoris", "냄새가 없다면 산부추가 아니에요."]],
      check=["잎에서 부추 냄새가 확실히 난다"]),
 
-dict(id="atractylodes", ko="삽주", aka=["창출", "백출"], sci="Atractylodes spp.", fam="국화과", v="edible", energy="낮음", months=[4, 5],
+dict(id="atractylodes", ko="삽주", aka=["창출", "백출"], sci="Atractylodes spp.", fam="국화과", v="edible_caution", energy="낮음", months=[4, 5],
      sum="봄 어린순이 맛있는 산나물이고, 뿌리는 백출·창출 약재예요.",
      look=["잎 가장자리에 바늘 같은 가시 톱니", "잎이 3~5갈래로 갈라지기도 함", "가을 흰 꽃(가시 같은 포가 둘러쌈)"],
      where="산기슭 양지",

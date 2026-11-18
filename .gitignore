@@ -6,3 +6,7 @@ __pycache__/
 app/www/model/
 app/www/ref/
 app/build/
+app/www/lib/
+app/www/fonts/*.woff2
+app/www/data/labels.json
+app/model_report.md

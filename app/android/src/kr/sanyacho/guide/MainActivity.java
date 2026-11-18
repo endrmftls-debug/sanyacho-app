@@ -187,6 +187,14 @@ public class MainActivity extends Activity {
             h.put("Cross-Origin-Resource-Policy", "same-origin");
             h.put("Cache-Control", "no-cache");
             h.put("Access-Control-Allow-Origin", "https://" + HOST);
+            try {
+                // Uncompressed assets (model, wasm, photos) report their size so the app can show load progress.
+                android.content.res.AssetFileDescriptor fd = getAssets().openFd(name);
+                h.put("Content-Length", String.valueOf(fd.getLength()));
+                fd.close();
+            } catch (IOException ignored) {
+                // compressed asset: size unknown, that's fine
+            }
             return new WebResourceResponse(mime(name), mime(name).startsWith("text/") ? "utf-8" : null, 200, "OK", h, in);
         } catch (IOException e) {
             return new WebResourceResponse("text/plain", "utf-8", 404, "Not found",
@@ -228,7 +236,17 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQ_FILE && fileCallback != null) {
-            fileCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
+            Uri[] result = null;
+            if (resultCode == RESULT_OK && data != null && data.getClipData() != null) {
+                android.content.ClipData clip = data.getClipData();
+                result = new Uri[clip.getItemCount()];
+                for (int i = 0; i < clip.getItemCount(); i++) {
+                    result[i] = clip.getItemAt(i).getUri();
+                }
+            } else {
+                result = WebChromeClient.FileChooserParams.parseResult(resultCode, data);
+            }
+            fileCallback.onReceiveValue(result);
             fileCallback = null;
             return;
         }
